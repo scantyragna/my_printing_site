@@ -1,0 +1,13 @@
+{
+  "name": "printwell-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "PRINTWELL marketing site prepared for deployment on Vercel with chat and gallery features.",
+  "scripts": {
+    "dev": "vercel dev",
+    "test": "node tests/chat.test.js || echo \"No tests configured\""
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
+

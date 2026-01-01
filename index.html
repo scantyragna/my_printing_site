@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>PRINTWELL</title>
+  <script src="assets/vendor/tailwindcss.js"></script>
+  <script src="assets/search.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pw-light: #070706;
+      --pw-mid: #FF4500;
+      --pw-dark: #D43C00;
+      --hdr-bg: #000000;
+      --hdr-text: #FFFFFF;
+      --accent: #FF4500;
+      --title-bg: #FF4500;
+      --title-text: #1F1F1F;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Oswald', sans-serif;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+  </style>
+</head>
+<body
+  style="
+    background: #000;
+  "
+  class="min-h-screen"
+>
+
+<section class="max-w-7xl mx-auto px-15 py-0 bg-white/70 rounded-2xl shadow-sm">
+
+
+<header class="shadow-lg sticky top-0 z-50">
+
+  <!-- TOP BAR -->
+  <div class="text-[var(--hdr-text)]" style="background: var(--hdr-bg)">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-0">
+      <!-- LOGO -->
+      <div class="flex items-center gap-3">
+        <img src="assets/images/logo.png" class="h-12" alt="PRINTWELL" />
+        <div class="leading-tight">
+          <h1 class="text-2xl font-extrabold tracking-wide">PRINTWELL</h1>
+          <p class="text-sm font-bold" style="background: linear-gradient(to right, var(--pw-mid), var(--pw-dark)); background-clip: text; -webkit-background-clip: text; color: transparent;">TIME TO DOMINATE</p>
+        </div>
+      </div>
+
+      <!-- DESKTOP MENU -->
+      <nav id="pw-top-nav" class="hidden lg:flex flex-col lg:flex-row gap-6 text-sm font-semibold uppercase">
+        <a class="hover:text-[var(--accent)]" href="index.html">Home</a>
+        <a class="hover:text-[var(--accent)]" href="contact.html">Contact</a>
+        <a class="hover:text-[var(--accent)]" href="services.html">Services</a>
+        <a class="hover:text-[var(--accent)]" href="portfolio.html">Portfolio</a>
+        <a class="hover:text-[var(--accent)]" href="about.html">About</a>
+        <a class="hover:text-[var(--accent)]" href="faqs.html">FAQ’s</a>
+      </nav>
+
+      <!-- ICONS -->
+      <div class="hidden lg:flex items-center gap-6 text-sm">
+        <div class="flex items-center gap-2">📞 <span>Contact</span></div>
+        <div class="flex items-center gap-2 cursor-pointer">🛒 <span>Cart</span></div>
+      </div>
+
+      <!-- MOBILE TOGGLE -->
+      <button class="lg:hidden text-3xl text-white" type="button" aria-label="Toggle menu" onclick="document.getElementById('pw-top-nav').classList.toggle('hidden')">☰</button>
+    </div>
+  </div>
+
+  <!-- LIGHT BLUE DIVIDER -->
+  <div style="height: 4px; background: var(--pw-mid);"></div>
+
+  <!-- LOWER SECTION -->
+  <div class="text-white" style="background: var(--hdr-bg); border-top: 2px solid var(--accent);">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+      <!-- SEARCH -->
+      <div class="flex justify-center mb-4">
+        <div class="flex items-center bg-white rounded-full overflow-hidden w-full max-w-2xl border-2 border-[var(--accent)]">
+          <input type="text" placeholder="Search" class="flex-1 px-4 py-2 outline-none text-black focus:outline-none focus:ring-2 focus:ring-[var(--accent)]" />
+          <button class="px-4 text-white text-xl bg-[var(--accent)] hover:opacity-90">🔍</button>
+        </div>
+      </div>
+      <!-- DROPDOWNS -->
+      <nav class="flex flex-wrap gap-8 justify-center font-bold uppercase text-sm">
+        <div class="group relative cursor-pointer">
+          <a href="apparel.html">Custom Apparel</a>
+          <div class="absolute hidden group-hover:block bg-white text-black mt-2 rounded shadow p-4 w-56">(Add menu items later)</div>
+        </div>
+        <div class="group relative cursor-pointer">
+          <a href="vehicle_wraps.html">Vehicle Wraps</a>
+          <div class="absolute hidden group-hover:block bg-white text-black mt-2 rounded shadow p-4 w-56">(Add menu items later)</div>
+        </div>
+        <div class="group relative cursor-pointer">
+          <a href="banners.html">Signs</a>
+          <div class="absolute hidden group-hover:block bg-white text-black mt-2 rounded shadow p-4 w-56">(Add menu items later)</div>
+        </div>
+        <div class="group relative cursor-pointer">
+          <a href="dtf.html">DTF Transfers</a>
+          <div class="absolute hidden group-hover:block bg-white text-black mt-2 rounded shadow p-4 w-56">(Add menu items later)</div>
+        </div>
+        <div class="group relative cursor-pointer">
+          <a href="stickers.html">Stickers</a>
+          <div class="absolute hidden group-hover:block bg-white text-black mt-2 rounded shadow p-4 w-56">(Add menu items later)</div>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<!-- HERO CAROUSEL -->
+<!-- Include Swiper CSS -->
+<link
+  rel="stylesheet"
+  href="assets/vendor/swiper-bundle.min.css"
+/>
+
+<section class="max-w-9.3A9.3xl mx-auto px-15 py-4">
+  <div class="swiper mySwiper rounded-2xl overflow-hidden shadow-lg">
+    <div class="swiper-wrapper">
+
+      <!-- Slide 1 -->
+      <div class="swiper-slide relative">
+        <img src="images/hero/stickers-slide.jpg" alt="Custom Stickers" class="w-full h-96 object-cover">
+        <div class="absolute inset-0 bg-black/70 flex flex-col justify-center items-start p-8 space-y-4">
+          <h2 class="text-3xl md:text-4xl font-extrabold text-white">Order High Quality Custom Printed Stickers</h2>
+          <p class="text-white max-w-xl">Join the growing number of small businesses telling their own stories with affordable custom vehicle wraps and graphics today!</p>
+          <div class="flex gap-4">
+            <a href="stickers.html"  class="bg-[var(--pw-mid)] hover:bg-[var(--pw-dark)] text-white font-bold px-6 py-3 rounded uppercase tracking-wider transition-colors border-2 border-[var(--pw-mid)] hover:border-[var(--pw-dark)]">STICKERS</a>
+            <a href="contact.html" class="bg-transparent hover:bg-[var(--pw-mid)] text-white font-bold px-6 py-3 rounded border-2 border-white hover:border-[var(--pw-mid)] uppercase tracking-wider transition-colors">REQUEST A QUOTE</a>
+          </div>
+        </div>
+      </div>
+       
+
+      <!-- Slide 2 -->
+      <div class="swiper-slide relative">
+        <img src="images/hero/vehicle-wraps.jpg" alt="Vehicle Wraps" class="w-full h-96 object-cover">
+        <div class="absolute inset-0 bg-black/70 flex flex-col justify-center items-start p-8 space-y-4">
+          <h2 class="text-3xl md:text-4xl font-extrabold text-white uppercase tracking-wide">Premium Vehicle Wraps & Graphics</h2>
+          <p class="text-white max-w-xl text-lg">Stand out on the road with our high-quality custom vehicle wraps for advertising and branding.</p>
+          <a href="vehicle_wraps.html" class="bg-[var(--pw-mid)] hover:bg-[var(--pw-dark)] text-white font-bold px-6 py-3 rounded uppercase tracking-wider transition-colors border-2 border-[var(--pw-mid)] hover:border-[var(--pw-dark)]">LEARN MORE</a>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="swiper-slide relative">
+        <img src="images/hero/apparel-slide.jpg" alt="Branded Apparel" class="w-full h-96 object-cover">
+        <div class="absolute inset-0 bg-black/70 flex flex-col justify-center items-start p-8 space-y-4">
+          <h2 class="text-3xl md:text-4xl font-extrabold text-white uppercase tracking-wide">Branded Apparel for Your Business</h2>
+          <p class="text-white max-w-xl text-lg">Elevate your brand with high-quality custom apparel and direct-to-film printing services.</p>
+          <a href="apparel.html" class="bg-[var(--pw-mid)] hover:bg-[var(--pw-dark)] text-white font-bold px-6 py-3 rounded uppercase tracking-wider transition-colors border-2 border-[var(--pw-mid)] hover:border-[var(--pw-dark)]">SHOP APPAREL</a>
+        </div>
+      </div>
+
+      <!-- Add more slides similarly -->
+
+    </div>
+    <!-- Navigation -->
+    <div class="swiper-button-next text-white"></div>
+    <div class="swiper-button-prev text-white"></div>
+    <!-- Pagination -->
+    <div class="swiper-pagination"></div>
+  </div>
+</section>
+
+<!-- Include Swiper JS -->
+<script src="assets/vendor/swiper-bundle.min.js"></script>
+<script>
+  const swiper = new Swiper('.mySwiper', {
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+  });
+</script>
+
+
+
+  <!-- 3 CARDS ROW -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-8 pb-12">
+    <!-- Card 1 -->
+    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col items-center text-center group">
+      <div class="h-48 w-full overflow-hidden">
+        <img src="images/sticker/image.jpg" alt="Stickers" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+      </div>
+      <div class="p-6">
+        <h3 class="text-xl font-bold mb-2 uppercase tracking-wide">Stickers</h3>
+        <p class="text-gray-600 mb-4">High-quality custom stickers for your brand or personal use. Durable and vibrant.</p>
+        <a href="stickers.html" class="inline-block border-2 border-[var(--pw-mid)] text-[var(--pw-mid)] font-bold px-4 py-2 rounded hover:bg-[var(--pw-mid)] hover:text-white transition uppercase tracking-wider">
+          Shop Now
+        </a>
+      </div>
+    </div>
+    <!-- Card 2 -->
+    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col items-center text-center group">
+      <div class="h-48 w-full overflow-hidden">
+        <img src="images/apparels/image.jpg" alt="Apparel" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+      </div>
+      <div class="p-6">
+        <h3 class="text-xl font-bold mb-2 uppercase tracking-wide">Apparel</h3>
+        <p class="text-gray-600 mb-4">Custom t-shirts, hoodies, and more. Perfect for teams, events, and businesses.</p>
+        <a href="apparel.html" class="inline-block border-2 border-[var(--pw-mid)] text-[var(--pw-mid)] font-bold px-4 py-2 rounded hover:bg-[var(--pw-mid)] hover:text-white transition uppercase tracking-wider">
+          Shop Now
+        </a>
+      </div>
+    </div>
+    <!-- Card 3 -->
+    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col items-center text-center group">
+      <div class="h-48 w-full overflow-hidden">
+        <img src="images/banners/image.jpg" alt="Banners" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+      </div>
+      <div class="p-6">
+        <h3 class="text-xl font-bold mb-2 uppercase tracking-wide">Banners</h3>
+        <p class="text-gray-600 mb-4">Eye-catching banners to promote your business or event. Indoor and outdoor options.</p>
+        <a href="banners.html" class="inline-block border-2 border-[var(--pw-mid)] text-[var(--pw-mid)] font-bold px-4 py-2 rounded hover:bg-[var(--pw-mid)] hover:text-white transition uppercase tracking-wider">
+          Shop Now
+        </a>
+      </div>
+    </div>
+  </div>
+
+<!-- ABOUT / FEATURE SECTION -->
+<section class="w-full bg-white/90">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center px-6 py-16 gap-8">
+
+    <!-- Left Image -->
+    <div class="md:w-1/2 h-64 md:h-[500px]">
+      <img src="images/Embroidery/image1.jpg" alt="Custom Print & Embroidery" class="w-full h-full object-cover rounded-lg shadow-lg" />
+    </div>
+
+    <!-- Right Text & Button -->
+    <div class="md:w-1/2 text-center md:text-left">
+      <h2 class="text-3xl font-extrabold mb-4 text-gray-900 uppercase tracking-wide">
+        Your One-stop Custom Print & Embroidery Shop
+      </h2>
+      <p class="text-gray-700 mb-6 text-lg">
+        Welcome to PRINTWELL FACTORY, where expertise meets innovation and a dedication to helping businesses shine. 
+        With a proud legacy dating back to 2007, in the midst of a housing crisis, we emerged as a family-owned business committed to empowering entrepreneurs. 
+        Our journey began as a decal and sign business, but over the years, we've evolved and expanded, becoming specialists in diverse areas of branding and marketing.
+      </p>
+      <a href="contact.html" class="inline-block bg-[var(--pw-mid)] hover:bg-[var(--pw-dark)] text-white font-bold px-8 py-4 rounded-lg shadow-lg transition uppercase tracking-wider">
+        Request a Quote
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- CUSTOM BANNERS & SIGNS SECTION -->
+<section class="w-full bg-gray-50 py-16">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <h2 class="text-3xl font-extrabold text-center mb-12 text-gray-900">
+      Make a Statement with Our Custom Banners and Signs
+    </h2>
+    <p class="text-gray-700 text-center max-w-2xl mx-auto mb-12">
+      Welcome to PRINTWELL FACTORY, where we turn your ideas into impactful visuals. 
+      Whether you're promoting an event, enhancing your storefront, or making a statement at a trade show, 
+      our custom banners and signs are designed to capture attention and leave a lasting impression.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+      <!-- BANNERS -->
+      <a href="banners.html" class="group block rounded-xl overflow-hidden shadow-lg bg-white">
+        <div 
+          class="relative h-60 slideshow"
+          data-images='["images/banners/image1.jpg","images/banners/image2.jpg","images/banners/image3.jpg"]'
+        ></div>
+        <div class="p-4 text-center font-bold text-lg">Banners</div>
+      </a>
+
+      <!-- A-FRAMES -->
+      <a href="aframes.html" class="group block rounded-xl overflow-hidden shadow-lg bg-white">
+        <div 
+          class="relative h-60 slideshow"
+          data-images='["images/frames/image.jpg","images/frames/image2.jpg","images/frames/image3.jpg"]'
+        ></div>
+        <div class="p-4 text-center font-bold text-lg">A-Frames</div>
+      </a>
+
+      <!-- WINDOW GRAPHICS -->
+      <a href="windowgraphics.html" class="group block rounded-xl overflow-hidden shadow-lg bg-white">
+        <div 
+          class="relative h-60 slideshow"
+          data-images='["images/windowgraphics/image.jpg","images/windowgraphics/image2.jpg","images/windowgraphics/image3.jpg"]'
+        ></div>
+        <div class="p-4 text-center font-bold text-lg">Window Graphics</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- SELECT A CATEGORY SECTION -->
+<section class="w-full bg-gray-100 py-16">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <h2 class="text-3xl font-extrabold text-center mb-12 text-gray-900">
+      Select a Category to Get Started
+    </h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+
+      <!-- Best Sellers -->  
+      <a href="bestsellers.html" class="group block overflow-hidden">
+        <div class="relative h-60">
+          <div class="slideshow h-full w-full" data-images='["images/cats/bs/image.jpg","images/cats/bs/image2.jpg","images/cats/bs/image3.jpg"]'></div>
+        </div>
+        <div class="text-center font-bold text-lg mt-2">Best Sellers</div>
+      </a>
+
+      <!-- Unisex T-Shirts -->
+      <a href="unisex-tshirts.html" class="group block overflow-hidden">
+        <div class="relative h-60">
+          <div class="slideshow h-full w-full" data-images='["images/cats/uts/image.jpg","images/cats/uts/image2.jpg","images/cats/uts/image3.jpg"]'></div>
+        </div>
+        <div class="text-center font-bold text-lg mt-2">Unisex T-Shirts</div>
+      </a>
+
+      <!-- Women's -->
+      <a href="womens.html" class="group block overflow-hidden">
+        <div class="relative h-60">
+          <div class="slideshow h-full w-full" data-images='["images/cats/womens/image.jpg","images/cats/womens/image2.jpg","images/cats/womens/image3.jpg"]'></div>
+        </div>
+        <div class="text-center font-bold text-lg mt-2">Women's</div>
+      </a>
+
+      <!-- Sweatshirts -->
+      <a href="sweatshirts.html" class="group block overflow-hidden">
+        <div class="relative h-60">
+          <div class="slideshow h-full w-full" data-images='["images/cats/sweatshirts/image.jpg","images/cats/sweatshirts/image2.jpg","images/cats/sweatshirts/image3.jpg"]'></div>
+        </div>
+        <div class="text-center font-bold text-lg mt-2">Sweatshirts</div>
+      </a>
+
+      <!-- Youth -->
+      <a href="youth.html" class="group block overflow-hidden">
+        <div class="relative h-60">
+          <div class="slideshow h-full w-full" data-images='["images/cats/youth/image.jpg","images/cats/youth/image2.jpg","images/cats/youth/image3.jpg"]'></div>
+        </div>
+        <div class="text-center font-bold text-lg mt-2">Youth</div>
+      </a>
+
+      <!-- Polos -->
+      <a href="polos.html" class="group block overflow-hidden">
+        <div class="relative h-60">
+          <div class="slideshow h-full w-full" data-images='["images/cats/polos/image.jpg","images/cats/polos/image2.jpg","images/cats/polos/image3.jpg"]'></div>
+        </div>
+        <div class="text-center font-bold text-lg mt-2">Polos</div>
+      </a>
+
+      <!-- Workwear -->
+      <a href="workwear.html" class="group block overflow-hidden">
+        <div class="relative h-60">
+          <div class="slideshow h-full w-full" data-images='["images/cats/work/image.jpg","images/cats/work/image2.jpg","images/cats/work/image3.jpg"]'></div>
+        </div>
+        <div class="text-center font-bold text-lg mt-2">Workwear</div>
+      </a>
+
+      <!-- Jackets -->
+      <a href="jackets.html" class="group block overflow-hidden">
+        <div class="relative h-60">
+          <div class="slideshow h-full w-full" data-images='["images/cats/jackets/image.jpg","images/cats/jackets/image2.jpg","images/cats/jackets/image3.jpg"]'></div>
+        </div>
+        <div class="text-center font-bold text-lg mt-2">Jackets</div>
+      </a>
+
+      <!-- Hats -->
+      <a href="hats.html" class="group block overflow-hidden">
+        <div class="relative h-60">
+          <div class="slideshow h-full w-full" data-images='["images/cats/hats/image.jpg","images/cats/hats/image2.jpg","images/cats/hats/image3.jpg"]'></div>
+        </div>
+        <div class="text-center font-bold text-lg mt-2">Hats</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- Slideshow JS -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.slideshow').forEach(function(slide) {
+    if (slide.dataset.pwSlideshowInit === '1') return;
+    slide.dataset.pwSlideshowInit = '1';
+    var imagesRaw = slide.getAttribute('data-images');
+    var images = [];
+    try {
+      images = JSON.parse(imagesRaw || '[]');
+    } catch {
+      images = [];
+    }
+    if (!Array.isArray(images) || images.length === 0) return;
+    var index = 0;
+    var imgElement = document.createElement('img');
+    imgElement.src = images[index];
+    imgElement.className = slide.classList.contains('pw-slideshow-rounded')
+      ? 'w-full h-full object-cover rounded-2xl'
+      : 'w-full h-full object-cover';
+    slide.appendChild(imgElement);
+    setInterval(function() {
+      index = (index + 1) % images.length;
+      imgElement.src = images[index];
+    }, 3000);
+  });
+});
+</script>
+
+<!-- CUSTOM STICKERS SECTION -->
+<section class="max-w-7xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center gap-12 bg-white/70 rounded-2xl shadow-sm">
+  <!-- Text Left -->
+  <div class="md:w-1/2">
+    <h2 class="text-3xl font-extrabold mb-6">Custom Stickers</h2>
+    <p class="text-gray-800 mb-6">
+      Elevate your designs with our range of custom stickers, available in gloss, matte, holographic, or clear finishes. Whether you prefer the sleek shine of gloss, the subtle elegance of matte, the mesmerizing allure of holographic, or the minimalist charm of clear stickers, we have the perfect finish for your creative vision. Our stickers, meticulously crafted to your desired shape and size, ensure vibrant colors and sharp details, regardless of the finish you choose. From adding a touch of sophistication with matte to creating a dazzling effect with holographic, our diverse finishes cater to every style. Let your imagination flourish and create stickers that leave a lasting impression, reflecting your unique personality and brand identity. Explore the possibilities – order your custom stickers today and make your designs shine in every way imaginable.
+    </p>
+    <a href="stickers.html" class="bg-[var(--pw-light)] hover:bg-[var(--pw-dark)] text-white px-6 py-3 rounded-lg font-bold">Learn More About our Stickers</a>
+  </div>
+  <!-- Image Right -->
+  <div class="md:w-1/2 h-96 relative">
+    <div class="slideshow h-full w-full pw-slideshow-rounded" data-images='["images/sticker/stickers/img2.jpg","images/sticker/stickers/img3.jpg","images/sticker/stickers/img1.jpg"]'></div>
+  </div>
+</section>
+
+<!-- CUSTOM MENUS SECTION -->
+<section class="max-w-7xl mx-auto px-6 py-20 flex flex-col md:flex-row-reverse items-center gap-12 bg-white/70 rounded-2xl shadow-sm mt-12">
+  <!-- Text Right -->
+  <div class="md:w-1/2">
+    <h2 class="text-3xl font-extrabold mb-6">Elevate Your Dining Experience with Our Customized Menus</h2>
+    <p class="text-gray-800 mb-6">
+      At PRINTWELL FACTORY, we understand that a menu is more than just a list of dishes – it's a reflection of your culinary identity. Whether you're a restaurant, food truck, or catering service, our menu solutions are designed to enhance your customer's dining experience.
+    </p>
+    <a href="menus.html" class="bg-[var(--pw-light)] hover:bg-[var(--pw-dark)] text-white px-6 py-3 rounded-lg font-bold">Learn More About our Menus</a>
+  </div>
+  <!-- Image Left -->
+  <div class="md:w-1/2 h-96 relative">
+    <div class="slideshow h-full w-full pw-slideshow-rounded" data-images='["images/menus/image2.jpg","images/menus/image1.jpg","images/menus/image.jpg"]'></div>
+  </div>
+</section>
+
+<!-- WHY PRINTWELL SECTION -->
+<section class="max-w-7xl mx-auto px-6 py-20 bg-white/70 rounded-2xl shadow-sm mt-12">
+  <h2 class="text-3xl font-extrabold text-center mb-12">WHY PRINTWELL?</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+    
+    <!-- Quality -->
+    <div class="flex flex-col items-center text-center">
+      <img src="images/why/imageq.jpg" class="h-24 mb-4" alt="Quality">
+      <h3 class="font-bold text-xl mb-2">Unmatched Quality</h3>
+      <p class="text-gray-800">We ensure every print, sticker, and banner is crafted with precision and care, reflecting the highest standards.</p>
+    </div>
+
+    <!-- Innovation -->
+    <div class="flex flex-col items-center text-center">
+      <img src="images/why/imagei.jpg" class="h-24 mb-4" alt="Innovation">
+      <h3 class="font-bold text-xl mb-2">Innovative Solutions</h3>
+      <p class="text-gray-800">From creative designs to modern printing techniques, we help your brand stand out in every way.</p>
+    </div>
+
+    <!-- Reliability -->
+    <div class="flex flex-col items-center text-center">
+      <img src="images/why/imager.jpg" class="h-24 mb-4" alt="Reliability">
+      <h3 class="font-bold text-xl mb-2">Reliable & Timely</h3>
+      <p class="text-gray-800">Count on us to deliver every project on time, maintaining consistency and professionalism.</p>
+    </div>
+
+    <!-- Customer Service -->
+    <div class="flex flex-col items-center text-center">
+      <img src="images/why/imagecs.jpg" class="h-24 mb-4" alt="Customer Service">
+      <h3 class="font-bold text-xl mb-2">Customer Focused</h3>
+      <p class="text-gray-800">Your satisfaction is our priority. We guide you every step of the way for a smooth and enjoyable experience.</p>
+    </div>
+
+    <!-- Versatility -->
+    <div class="flex flex-col items-center text-center">
+      <img src="images/why/imagev.jpg" class="h-24 mb-4" alt="Versatility">
+      <h3 class="font-bold text-xl mb-2">Versatility</h3>
+      <p class="text-gray-800">From small-scale decals to large-scale banners, we handle diverse projects with expertise.</p>
+    </div>
+
+    <!-- Creativity -->
+    <div class="flex flex-col items-center text-center">
+      <img src="images/why/imagec.jpg" class="h-24 mb-4" alt="Creativity">
+      <h3 class="font-bold text-xl mb-2">Creative Excellence</h3>
+      <p class="text-gray-800">We bring ideas to life with unique designs that make your brand memorable and impactful.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- FOOTER stays the same as in home.html -->
+ <!-- FOOTER -->
+<footer class="bg-black text-white mt-12">
+
+  <!-- CLICKABLE FOOTER MAP -->
+  <section class="w-full mt-10">
+    <a href="https://www.google.com/maps/dir/?api=1&destination=6.691037226953397,-1.6575542217707613" target="_blank">
+      <div class="overflow-hidden rounded-xl shadow-lg cursor-pointer">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.6432216159174!2d-1.6575542217707613!3d6.691037226953397!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdb972992ac17d7%3A0xfa24de328cd4f1e7!2sPrintWell!5e0!3m2!1sen!2sgh!4v1767043863213!5m2!1sen!2sgh"
+          width="100%"
+          height="350"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </a>
+  </section>
+
+  <!-- FOOTER CONTENT -->
+  <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
+
+    <!-- LOGO & DESCRIPTION -->
+    <div>
+      <img src="assets/images/logo.png" class="h-12 mb-4" alt="PRINTWELL" />
+      <p class="text-sm text-gray-300">
+        PRINTWELL – Your partner in branding, design, and printing solutions. Time to dominate your market!
+      </p>
+    </div>
+
+    <!-- QUICK LINKS -->
+    <div>
+      <h3 class="font-bold text-lg mb-4">Quick Links</h3>
+      <ul class="space-y-2 text-gray-300 text-sm">
+        <li><a href="index.html" class="hover:text-[var(--pw-mid)]">Home</a></li>
+        <li><a href="services.html" class="hover:text-[var(--pw-mid)]">Services</a></li>
+        <li><a href="portfolio.html" class="hover:text-[var(--pw-mid)]">Portfolio</a></li>
+        <li><a href="about.html" class="hover:text-[var(--pw-mid)]">About</a></li>
+        <li><a href="contact.html" class="hover:text-[var(--pw-mid)]">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- CONTACT INFO -->
+    <div>
+      <h3 class="font-bold text-lg mb-4">Contact Us</h3>
+      <ul class="space-y-2 text-gray-300 text-sm">
+        <li><span class="mr-2">📞</span> (+233) 55 661 2684</li>
+        <li><span class="mr-2">✉️</span> printwellinfos@gmail.com</li>
+        <li><span class="mr-2">📍</span> Patasi, Kumasi — Ghana</li>
+      </ul>
+    </div>
+
+    <!-- NEWSLETTER & SOCIALS -->
+    <div>
+      <h3 class="font-bold text-lg mb-4">Stay Connected</h3>
+      <p class="text-gray-300 text-sm mb-4">Subscribe to our newsletter for updates and offers.</p>
+      <form class="flex flex-col sm:flex-row gap-2">
+        <input type="email" placeholder="Your email" class="flex-1 px-2 py-2 rounded-md text-black outline-none" />
+        <button class="bg-[var(--pw-light)] hover:bg-[var(--pw-dark)] px-3 py-2 rounded-md font-bold text-white">
+          Subscribe
+        </button>
+      </form>
+      <div class="flex gap-4 mt-4 text-xl">
+        <a href="#" class="hover:text-[var(--pw-mid)]" aria-label="Facebook">f</a>
+        <a href="#" class="hover:text-[var(--pw-mid)]" aria-label="Twitter">X</a>
+        <a href="#" class="hover:text-[var(--pw-mid)]" aria-label="Instagram">◎</a>
+        <a href="#" class="hover:text-[var(--pw-mid)]" aria-label="LinkedIn">in</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="border-t border-gray-800 mt-8 py-4 text-center text-gray-400 text-sm">
+    &copy; 2025 PRINTWELL. All rights reserved.
+  </div>
+
+</footer>
+
+<script src="assets.js" defer></script>
+<script src="content.js" defer></script>
+<script src="newsletter.js" defer></script>
+<script src="chat.js" defer></script>
