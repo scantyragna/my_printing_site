@@ -216,15 +216,26 @@
   <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
     <!-- Banners -->
-    <a href="banners.html" class="group block rounded-xl overflow-hidden shadow-lg bg-white transition transform hover:-translate-y-1 hover:shadow-2xl relative">
-      <div class="relative h-60">
-        <!-- Slideshow with img src -->
-                  <img src="images/banners/image.jpg" class="absolute inset-0 w-full h-full object-cover" alt="Apparels">
-        
-
-        <!-- Text overlay at bottom center -->
-        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 text-white font-bold px-4 py-2 rounded text-center">
-            Banners      </div>
+    <a href="banners.html" aria-label="Banners service" class="group block rounded-xl overflow-hidden shadow-lg bg-white transition transform hover:-translate-y-1 hover:shadow-2xl relative focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2 focus:ring-offset-white">
+      <div class="relative h-56 sm:h-60 md:h-64 lg:h-72">
+        <div class="slideshow h-full w-full" data-images='["images/banners/imag1.jpg","images/banners/imga2.jpg","images/banners/imag3.jpg"]'>
+          <div class="img-placeholder absolute inset-0 bg-gray-200 dark:bg-gray-700 animate-pulse" aria-hidden="true"></div>
+          <div class="img-fallback absolute inset-0 hidden items-center justify-center bg-gradient-to-br from-gray-200 to-gray-300 text-gray-700 text-sm font-medium"></div>
+          <img
+            src="images/banners/image.jpg"
+            alt="Banners"
+            loading="lazy"
+            decoding="async"
+            fetchpriority="low"
+            sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+            class="absolute inset-0 w-full h-full object-cover will-change-transform transition duration-300 ease-out group-hover:scale-105 group-hover:brightness-90"
+            data-enhanced-image
+          >
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 ease-out" aria-hidden="true"></div>
+        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/60 text-white font-bold px-4 py-2 rounded text-center backdrop-blur-sm">
+          Banners
+        </div>
       </div>
     </a>
 
@@ -477,3 +488,30 @@
 <script src="assets.js" defer></script>
 <script src="newsletter.js" defer></script>
 <script src="chat.js" defer></script>
+<script>
+(function(){
+  var svgFallback='data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800"><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="%23e5e7eb"/><stop offset="1" stop-color="%23d1d5db"/></linearGradient></defs><rect width="100%" height="100%" fill="url(%23g)"/><text x="50%" y="50%" text-anchor="middle" fill="%236b7280" font-family="Arial, sans-serif" font-size="48">Image unavailable</text></svg>';
+  var imgs=document.querySelectorAll('img[data-enhanced-image]');
+  for(var i=0;i<imgs.length;i++){
+    (function(img){
+      var container=img.closest('.relative');
+      var placeholder=container?container.querySelector('.img-placeholder'):null;
+      var fallback=container?container.querySelector('.img-fallback'):null;
+      var hidePlaceholder=function(){ if(placeholder){ placeholder.classList.add('opacity-0'); } };
+      var showFallback=function(){
+        img.src=svgFallback;
+        img.classList.remove('object-cover');
+        img.classList.add('object-contain');
+        hidePlaceholder();
+        if(fallback){ fallback.classList.remove('hidden'); fallback.classList.add('flex'); }
+      };
+      if(img.complete){
+        if(img.naturalWidth>0){ hidePlaceholder(); } else { showFallback(); }
+      }else{
+        img.addEventListener('load', function(){ hidePlaceholder(); }, { once:true });
+        img.addEventListener('error', function(){ showFallback(); }, { once:true });
+      }
+    })(imgs[i]);
+  }
+})();
+</script>
