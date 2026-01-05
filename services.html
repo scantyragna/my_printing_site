@@ -215,27 +215,15 @@
 
   <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-    <!-- Banners -->
-    <a href="banners.html" aria-label="Banners service" class="group block rounded-xl overflow-hidden shadow-lg bg-white transition transform hover:-translate-y-1 hover:shadow-2xl relative focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2 focus:ring-offset-white">
-      <div class="relative h-56 sm:h-60 md:h-64 lg:h-72">
-        <div class="flex items-center justify-center h-full w-full">
-          <div class="img-placeholder absolute inset-0 bg-gray-200 dark:bg-gray-700 animate-pulse" aria-hidden="true"></div>
-          <div class="img-fallback absolute inset-0 hidden items-center justify-center bg-gradient-to-br from-gray-200 to-gray-300 text-gray-700 text-sm font-medium"></div>
-          <img
-            src="images/banners/image.jpg"
-            alt="Custom banners printing"
-            width="1200"
-            height="800"
-            loading="lazy"
-            decoding="async"
-            fetchpriority="low"
-            sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-            class="max-w-full h-auto object-contain mx-auto will-change-transform transition duration-300 ease-out group-hover:scale-105 group-hover:brightness-90"
-            data-enhanced-image
-          >
+    <a href="posters.html" class="group block rounded-xl overflow-hidden shadow-lg bg-white transition transform hover:-translate-y-1 hover:shadow-2xl relative">
+      <div class="relative h-60">
+        <!-- Slideshow with img src -->
+        <div class="slideshow h-full w-full" data-images='["images/posters/img1.jpg","images/posters/img2.jpg","images/posters/img3.jpg"]'>
+          <img src="images/banners/image1.jpg" class="absolute inset-0 w-full h-full object-cover" alt="Posters">
         </div>
-        <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 ease-out" aria-hidden="true"></div>
-        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/60 text-white font-bold px-4 py-2 rounded text-center backdrop-blur-sm">
+
+        <!-- Text overlay at bottom center -->
+        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 text-white font-bold px-4 py-2 rounded text-center">
           Banners
         </div>
       </div>
