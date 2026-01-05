@@ -218,17 +218,19 @@
     <!-- Banners -->
     <a href="banners.html" aria-label="Banners service" class="group block rounded-xl overflow-hidden shadow-lg bg-white transition transform hover:-translate-y-1 hover:shadow-2xl relative focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2 focus:ring-offset-white">
       <div class="relative h-56 sm:h-60 md:h-64 lg:h-72">
-        <div class="slideshow h-full w-full" data-images='["images/banners/imag1.jpg","images/banners/imga2.jpg","images/banners/imag3.jpg"]'>
+        <div class="flex items-center justify-center h-full w-full">
           <div class="img-placeholder absolute inset-0 bg-gray-200 dark:bg-gray-700 animate-pulse" aria-hidden="true"></div>
           <div class="img-fallback absolute inset-0 hidden items-center justify-center bg-gradient-to-br from-gray-200 to-gray-300 text-gray-700 text-sm font-medium"></div>
           <img
             src="images/banners/image.jpg"
-            alt="Banners"
+            alt="Custom banners printing"
+            width="1200"
+            height="800"
             loading="lazy"
             decoding="async"
             fetchpriority="low"
             sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-            class="absolute inset-0 w-full h-full object-cover will-change-transform transition duration-300 ease-out group-hover:scale-105 group-hover:brightness-90"
+            class="max-w-full h-auto object-contain mx-auto will-change-transform transition duration-300 ease-out group-hover:scale-105 group-hover:brightness-90"
             data-enhanced-image
           >
         </div>
