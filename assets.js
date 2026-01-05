@@ -22,5 +22,9 @@ document.addEventListener("DOMContentLoaded", function () {
       node.setAttribute("src", resolved);
     }
   });
+  const imgs = document.querySelectorAll("img");
+  imgs.forEach(function(img){
+    if(!img.hasAttribute("loading")) img.setAttribute("loading","lazy");
+    if(!img.hasAttribute("decoding")) img.setAttribute("decoding","async");
+  });
 });
-
