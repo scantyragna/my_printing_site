@@ -2,14 +2,16 @@
 <html>
 <head>
   <meta charset="utf-8" />
+  <title>About — PRINTWELL</title>
+
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PRINTWELL</title>
   <script src="assets/vendor/tailwindcss.js"></script>
   <script src="assets/search.js"></script>
-  <link rel="stylesheet" href="assets/responsive.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/responsive.css">
+
   <style>
     :root {
       --pw-light: #070706;
@@ -22,9 +24,9 @@
       --title-text: #1F1F1F;
     }
     h1, h2, h3, h4, h5, h6 { font-family: 'Oswald', sans-serif; }
-    body { font-family: 'Roboto', sans-serif; }
-  </style>
-</head>
+     body { font-family: 'Roboto', sans-serif; }
+   </style>
+ </head>
 <body
   style="
     background: #000;
@@ -32,83 +34,12 @@
   class="min-h-screen"
 >
 
+<div id="main-header"></div>
+<!-- PAGE TITLE BAR -->
+<div class="w-full flex items-center justify-center text-[var(--title-text)] text-3xl font-extrabold tracking-wide" style="height: 110px; background: var(--title-bg); border-bottom: 2px solid var(--accent);">
+  ABOUT
+</div>
 <section class="max-w-7xl mx-auto px-15 py-0 bg-white/70 rounded-2xl shadow-sm">
-
-
-<header class="shadow-lg sticky top-0 z-50">
-
-  <!-- TOP BAR -->
-  <div class="text-[var(--hdr-text)]" style="background: var(--hdr-bg)">
-    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-0">
-      <!-- LOGO -->
-      <div class="flex items-center gap-3">
-        <img src="assets/images/logo.png" class="h-12" alt="PRINTWELL" />
-        <div class="leading-tight">
-          <h1 class="text-2xl font-extrabold tracking-wide">PRINTWELL</h1>
-          <p class="text-sm font-bold" style="background: linear-gradient(to right, var(--pw-mid), var(--pw-dark)); background-clip: text; -webkit-background-clip: text; color: transparent;">TIME TO DOMINATE</p>
-        </div>
-      </div>
-
-      <!-- DESKTOP MENU -->
-      <nav id="pw-top-nav" class="hidden lg:flex flex-col lg:flex-row gap-6 text-sm font-semibold uppercase">
-        <a class="hover:text-[var(--accent)]" href="index.html">Home</a>
-        <a class="hover:text-[var(--accent)]" href="contact.html">Contact</a>
-        <a class="hover:text-[var(--accent)]" href="services.html">Services</a>
-        <a class="hover:text-[var(--accent)]" href="portfolio.html">Portfolio</a>
-        <a class="hover:text-[var(--accent)]" href="about.html">About</a>
-        <a class="hover:text-[var(--accent)]" href="faqs.html">FAQ’s</a>
-      </nav>
-
-      <!-- ICONS -->
-      <div class="hidden lg:flex items-center gap-6 text-sm">
-        <div class="flex items-center gap-2">📞 <span>Contact</span></div>
-        <div class="flex items-center gap-2 cursor-pointer">🛒 <span>Cart</span></div>
-      </div>
-
-      <!-- MOBILE TOGGLE -->
-      <button class="lg:hidden text-3xl text-white" type="button" aria-label="Toggle menu" onclick="document.getElementById('pw-top-nav').classList.toggle('hidden')">☰</button>
-    </div>
-  </div>
-
-  <!-- LIGHT BLUE DIVIDER -->
-  <div style="height: 4px; background: var(--accent);"></div>
-
-  <!-- LOWER SECTION -->
-  <div style="background: var(--hdr-bg);" class="text-white">
-    <div class="max-w-7xl mx-auto px-6 py-4">
-      <!-- SEARCH -->
-      <div class="flex justify-center mb-4">
-        <div class="flex items-center bg-white rounded-full overflow-hidden w-full max-w-2xl">
-          <input type="text" placeholder="Search" class="flex-1 px-4 py-2 outline-none text-black" />
-          <button class="px-4 text-black text-xl">🔍</button>
-        </div>
-      </div>
-      <!-- DROPDOWNS -->
-      <nav class="flex flex-wrap gap-8 justify-center font-bold uppercase text-sm">
-        <div class="group relative cursor-pointer">
-          <a href="apparel.html">Custom Apparel</a>
-          <div class="absolute hidden group-hover:block bg-white text-black mt-2 rounded shadow p-4 w-56">(Add menu items later)</div>
-        </div>
-        <div class="group relative cursor-pointer">
-          <a href="vehicle_wraps.html">Vehicle Wraps</a>
-          <div class="absolute hidden group-hover:block bg-white text-black mt-2 rounded shadow p-4 w-56">(Add menu items later)</div>
-        </div>
-        <div class="group relative cursor-pointer">
-          <a href="banners.html">Signs</a>
-          <div class="absolute hidden group-hover:block bg-white text-black mt-2 rounded shadow p-4 w-56">(Add menu items later)</div>
-        </div>
-        <div class="group relative cursor-pointer">
-          <a href="dtf.html">DTF Transfers</a>
-          <div class="absolute hidden group-hover:block bg-white text-black mt-2 rounded shadow p-4 w-56">(Add menu items later)</div>
-        </div>
-        <div class="group relative cursor-pointer">
-          <a href="stickers.html">Stickers</a>
-          <div class="absolute hidden group-hover:block bg-white text-black mt-2 rounded shadow p-4 w-56">(Add menu items later)</div>
-        </div>
-      </nav>
-    </div>
-  </div>
-</header>
 
 
 <main class="max-w-7xl mx-auto px-6 py-12 space-y-16">
@@ -235,6 +166,9 @@
 
 </footer>
 
+<script src="assets/js/layout.js"></script>
 <script src="assets.js" defer></script>
 <script src="newsletter.js" defer></script>
-<script src="chat.js" defer></script>
+
+<script src="components/tawk-widget.js"></script>
+ 

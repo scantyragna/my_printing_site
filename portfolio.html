@@ -1,185 +1,813 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
+  <title>Portfolio — PRINTWELL</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PRINTWELL</title>
   <script src="assets/vendor/tailwindcss.js"></script>
-  <script src="assets/search.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/responsive.css">
+
   <style>
     :root {
-      --pw-light: #FFE0B2;
-      --pw-mid: #FB8C00;
-      --pw-dark: #E65100;
+      --pw-light: #070706;
+      --pw-mid: #FF4500;
+      --pw-dark: #D43C00;
+      --hdr-bg: #000000;
+      --hdr-text: #FFFFFF;
+      --accent: #FF4500;
+      --title-bg: #FF4500;
+      --title-text: #1F1F1F;
+      --emergency-red: #dc2626;
+      --emergency-orange: #f59e0b;
+      --emergency-yellow: #eab308;
+      --service-blue: #2563eb;
+      --service-green: #059669;
+      --service-purple: #7c3aed;
+      --service-pink: #db2777;
+      --service-teal: #0891b2;
+      --service-indigo: #4f46e5;
+    }
+    
+    h1, h2, h3, h4, h5, h6 { font-family: 'Oswald', sans-serif; }
+    body { font-family: 'Roboto', sans-serif; }
+
+    /* Enhanced Portfolio Styles */
+    .portfolio-container {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #000 0%, #1a1a1a 50%, #2d2d2d 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .portfolio-header {
+      text-align: center;
+      padding: 4rem 2rem 2rem;
+      color: white;
+    }
+
+    .portfolio-header h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--pw-mid) 0%, var(--pw-dark) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .portfolio-header p {
+      font-size: 1.2rem;
+      opacity: 0.8;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      position: relative;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+      border-radius: 20px;
+      padding: 2rem;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+      transform: translateY(0);
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(255, 69, 0, 0.3);
+      border-color: var(--pw-mid);
+    }
+
+    .service-card.expanded {
+      grid-column: 1 / -1;
+      max-width: 1200px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%);
+      cursor: default;
+    }
+
+    .service-card-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .service-icon {
+      font-size: 3rem;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    }
+
+    .service-info h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+
+    .service-info p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .emergency-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--emergency-red);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      z-index: 10;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    .related-services {
+      display: none;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .service-card.expanded .related-services {
+      display: grid;
+    }
+
+    .related-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(30px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .related-card:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-5px);
+      border-color: var(--pw-mid);
+    }
+
+    .related-card-image {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .related-card:hover .related-card-image {
+      transform: scale(1.05);
+    }
+
+    .related-card h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+
+    .related-card p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.85rem;
+      line-height: 1.3;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      z-index: 20;
+    }
+
+    .close-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.1);
+    }
+
+    .service-card.expanded .close-btn {
+      display: flex;
+    }
+
+    /* Service category colors */
+    .service-card.printing { border-left: 4px solid var(--pw-mid); }
+    .service-card.design { border-left: 4px solid var(--service-purple); }
+    .service-card.signage { border-left: 4px solid var(--service-green); }
+    .service-card.apparel { border-left: 4px solid var(--service-blue); }
+    .service-card.promo { border-left: 4px solid var(--service-pink); }
+    .service-card.digital { border-left: 4px solid var(--service-teal); }
+
+    /* Enhanced animations */
+    .service-card.expanded .related-card:nth-child(1) {
+      animation: slideInUp 0.5s ease 0.1s forwards;
+    }
+
+    .service-card.expanded .related-card:nth-child(2) {
+      animation: slideInUp 0.5s ease 0.2s forwards;
+    }
+
+    .service-card.expanded .related-card:nth-child(3) {
+      animation: slideInUp 0.5s ease 0.3s forwards;
+    }
+
+    .service-card.expanded .related-card:nth-child(4) {
+      animation: slideInUp 0.5s ease 0.4s forwards;
+    }
+
+    .service-card.expanded .related-card:nth-child(5) {
+      animation: slideInUp 0.5s ease 0.5s forwards;
+    }
+
+    .service-card.expanded .related-card:nth-child(6) {
+      animation: slideInUp 0.5s ease 0.6s forwards;
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Particle effects for emergency services */
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: var(--emergency-yellow);
+      border-radius: 50%;
+      animation: float 6s infinite linear;
+      opacity: 0;
+    }
+
+    .particle:nth-child(odd) {
+      background: var(--emergency-orange);
+      animation-duration: 8s;
+    }
+
+    @keyframes float {
+      0% {
+        opacity: 0;
+        transform: translateY(100vh) scale(0);
+      }
+      10% {
+        opacity: 1;
+        transform: translateY(90vh) scale(1);
+      }
+      90% {
+        opacity: 1;
+        transform: translateY(10vh) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(0) scale(0);
+      }
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .portfolio-header h1 {
+        font-size: 2rem;
+      }
+      
+      .services-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+        gap: 1.5rem;
+      }
+      
+      .service-card.expanded {
+        grid-column: 1;
+      }
+      
+      .related-services {
+        grid-template-columns: 1fr;
+      }
+      
+      .service-card {
+        padding: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .portfolio-header {
+        padding: 2rem 1rem 1rem;
+      }
+      
+      .portfolio-header h1 {
+        font-size: 1.5rem;
+      }
+      
+      .service-card {
+        padding: 1rem;
+      }
+      
+      .service-icon {
+        font-size: 2rem;
+      }
+      
+      .service-info h3 {
+        font-size: 1.2rem;
+      }
+    }
+
+    /* Accessibility */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .service-card:focus-visible,
+    .related-card:focus-visible {
+      outline: 2px solid var(--pw-mid);
+      outline-offset: 2px;
+    }
+
+    .close-btn:focus-visible {
+      outline: 2px solid white;
+      outline-offset: 2px;
+    }
+
+    /* Loading state */
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: white;
+      animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
     }
   </style>
 </head>
-<body
-  style="
-    background: radial-gradient(circle at top, #1F2933 0%, #050816 55%, #020617 100%);
-  "
-  class="min-h-screen"
->
-
-<section class="max-w-7xl mx-auto px-15 py-0 bg-white/70 rounded-2xl shadow-sm">
-
-
-<header class="shadow-lg sticky top-0 z-50">
-
-  <!-- TOP BAR -->
-  <div class="text-black" style="background: var(--pw-mid)">
-    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-      <!-- LOGO -->
-      <div class="flex items-center gap-3">
-        <img src="assets/images/logo.png" class="h-12" alt="PRINTWELL" />
-        <div class="leading-tight">
-          <h1 class="text-2xl font-extrabold tracking-wide">PRINTWELL</h1>
-          <p class="text-sm font-bold" style="background: linear-gradient(to right, var(--pw-mid), var(--pw-dark)); background-clip: text; -webkit-background-clip: text; color: transparent;">TIME TO DOMINATE</p>
-        </div>
-      </div>
-
-      <!-- DESKTOP MENU -->
-      <nav id="pw-top-nav" class="hidden lg:flex flex-col lg:flex-row gap-6 text-sm font-semibold uppercase">
-        <a class="hover:text-[var(--pw-mid)]" href="index.html">Home</a>
-        <a class="hover:text-[var(--pw-mid)]" href="contact.html">Contact</a>
-        <a class="hover:text-[var(--pw-mid)]" href="services.html">Services</a>
-        <a class="hover:text-[var(--pw-mid)]" href="portfolio.html">Portfolio</a>
-        <a class="hover:text-[var(--pw-mid)]" href="about.html">About</a>
-        <a class="hover:text-[var(--pw-mid)]" href="faqs.html">FAQ’s</a>
-      </nav>
-
-      <!-- ICONS -->
-      <div class="hidden lg:flex items-center gap-6 text-sm">
-        <div class="flex items-center gap-2">📞 <span>Contact</span></div>
-        <div class="flex items-center gap-2 cursor-pointer">🛒 <span>Cart</span></div>
-      </div>
-
-      <!-- MOBILE TOGGLE -->
-      <button class="lg:hidden text-3xl text-white" type="button" aria-label="Toggle menu" onclick="document.getElementById('pw-top-nav').classList.toggle('hidden')">☰</button>
+<body>
+  <div id="main-header"></div>
+  
+  <div class="portfolio-container">
+    <div class="portfolio-header">
+      <h1>Our Services Portfolio</h1>
+      <p>Discover our comprehensive range of printing and design solutions. Click on any service to explore related offerings.</p>
     </div>
+    
+    <div class="services-grid" id="serviceCategories">
+      <!-- Service cards will be dynamically generated -->
+    </div>
+    
+    <div class="particles" id="particles"></div>
   </div>
 
-  <!-- LIGHT BLUE DIVIDER -->
-  <div style="height: 4px; background: linear-gradient(to right, var(--pw-light), var(--pw-mid));"></div>
+  <script>
+    // Enhanced Portfolio System
+    class EnhancedPortfolio {
+      constructor() {
+        this.container = document.getElementById('serviceCategories');
+        this.particlesContainer = document.getElementById('particles');
+        this.isAnimating = false;
+        
+        this.serviceData = [
+          {
+            id: 'printing',
+            title: 'Premium Printing',
+            description: 'High-quality printing services for all your business needs',
+            icon: '🖨️',
+            color: 'printing',
+            isEmergency: true,
+            related: [
+              {
+                title: 'Business Cards',
+                description: 'Professional business card printing with premium finishes',
+                image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=300&fit=crop'
+              },
+              {
+                title: 'Flyers & Brochures',
+                description: 'Marketing materials that make an impact',
+                image: 'https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=400&h=300&fit=crop'
+              },
+              {
+                title: 'Posters & Banners',
+                description: 'Large format printing for maximum visibility',
+                image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=300&fit=crop'
+              },
+              {
+                title: 'Stationery',
+                description: 'Custom letterheads and envelopes',
+                image: 'https://images.unsplash.com/photo-1558655146-d09347e92766?w=400&h=300&fit=crop'
+              }
+            ]
+          },
+          {
+            id: 'design',
+            title: 'Creative Design',
+            description: 'Innovative design solutions that capture attention',
+            icon: '🎨',
+            color: 'design',
+            isEmergency: false,
+            related: [
+              {
+                title: 'Logo Design',
+                description: 'Unique brand identity creation',
+                image: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=400&h=300&fit=crop'
+              },
+              {
+                title: 'Brand Identity',
+                description: 'Complete branding packages',
+                image: 'https://images.unsplash.com/photo-1558655146-d09347e92766?w=400&h=300&fit=crop'
+              },
+              {
+                title: 'Marketing Materials',
+                description: 'Designs that drive results',
+                image: 'https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=400&h=300&fit=crop'
+              },
+              {
+                title: 'Digital Graphics',
+                description: 'Web and social media designs',
+                image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&h=300&fit=crop'
+              }
+            ]
+          },
+          {
+            id: 'signage',
+            title: 'Signage & Displays',
+            description: 'Eye-catching signs and display solutions',
+            icon: '📋',
+            color: 'signage',
+            isEmergency: true,
+            related: [
+              {
+                title: 'Window Graphics',
+                description: 'Professional window decals and graphics',
+                image: 'https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=400&h=300&fit=crop'
+              },
+              {
+                title: 'Vehicle Wraps',
+                description: 'Mobile advertising solutions',
+                image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=300&fit=crop'
+              },
+              {
+                title: 'Banners',
+                description: 'Durable outdoor banners',
+                image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=300&fit=crop'
+              },
+              {
+                title: 'Trade Show Displays',
+                description: 'Professional exhibition materials',
+                image: 'https://images.unsplash.com/photo-1558655146-d09347e92766?w=400&h=300&fit=crop'
+              }
+            ]
+          },
+          {
+            id: 'apparel',
+            title: 'Custom Apparel',
+            description: 'Personalized clothing and accessories',
+            icon: '👕',
+            color: 'apparel',
+            isEmergency: false,
+            related: [
+              {
+                title: 'T-Shirts',
+                description: 'Custom t-shirt printing',
+                image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=300&fit=crop'
+              },
+              {
+                title: 'Embroidery',
+                description: 'Professional embroidered logos',
+                image: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=400&h=300&fit=crop'
+              },
+              {
+                title: 'Hats & Caps',
+                description: 'Custom headwear',
+                image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400&h=300&fit=crop'
+              },
+              {
+                title: 'Workwear',
+                description: 'Professional uniforms',
+                image: 'https://images.unsplash.com/photo-1558655146-d09347e92766?w=400&h=300&fit=crop'
+              }
+            ]
+          },
+          {
+            id: 'promo',
+            title: 'Promotional Items',
+            description: 'Branded merchandise and giveaways',
+            icon: '🎁',
+            color: 'promo',
+            isEmergency: false,
+            related: [
+              {
+                title: 'Stickers & Decals',
+                description: 'Custom stickers for any purpose',
+                image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=300&fit=crop'
+              },
+              {
+                title: 'Pens & Office Supplies',
+                description: 'Useful branded items',
+                image: 'https://images.unsplash.com/photo-1558655146-d09347e92766?w=400&h=300&fit=crop'
+              },
+              {
+                title: 'Drinkware',
+                description: 'Custom mugs and bottles',
+                image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&h=300&fit=crop'
+              },
+              {
+                title: 'Tech Accessories',
+                description: 'Modern promotional items',
+                image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&h=300&fit=crop'
+              }
+            ]
+          },
+          {
+            id: 'digital',
+            title: 'Digital Solutions',
+            description: 'Modern digital printing and services',
+            icon: '💻',
+            color: 'digital',
+            isEmergency: false,
+            related: [
+              {
+                title: 'DTF Printing',
+                description: 'Direct-to-film transfers',
+                image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&h=300&fit=crop'
+              },
+              {
+                title: 'UV Printing',
+                description: 'High-quality UV printing',
+                image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&h=300&fit=crop'
+              },
+              {
+                title: 'Sublimation',
+                description: 'Vibrant color transfers',
+                image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&h=300&fit=crop'
+              },
+              {
+                title: 'Laser Engraving',
+                description: 'Precise engraving services',
+                image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&h=300&fit=crop'
+              }
+            ]
+          }
+        ];
+        
+        this.init();
+      }
 
-  <!-- LOWER SECTION -->
-  <div style="background: linear-gradient(to bottom, var(--pw-light), var(--pw-dark));" class="text-white">
-    <div class="max-w-7xl mx-auto px-6 py-4">
-      <!-- SEARCH -->
-      <div class="flex justify-center mb-4">
-        <div class="flex items-center bg-white rounded-full overflow-hidden w-full max-w-2xl">
-          <input type="text" placeholder="Search" class="flex-1 px-4 py-2 outline-none text-black" />
-          <button class="px-4 text-black text-xl">🔍</button>
-        </div>
-      </div>
-      <!-- DROPDOWNS -->
-      <nav class="flex flex-wrap gap-8 justify-center font-bold uppercase text-sm">
-        <div class="group relative cursor-pointer">
-          <a href="apparel.html">Custom Apparel</a>
-          <div class="absolute hidden group-hover:block bg-white text-black mt-2 rounded shadow p-4 w-56">(Add menu items later)</div>
-        </div>
-        <div class="group relative cursor-pointer">
-          <a href="vehicle_wraps.html">Vehicle Wraps</a>
-          <div class="absolute hidden group-hover:block bg-white text-black mt-2 rounded shadow p-4 w-56">(Add menu items later)</div>
-        </div>
-        <div class="group relative cursor-pointer">
-          <a href="banners.html">Signs</a>
-          <div class="absolute hidden group-hover:block bg-white text-black mt-2 rounded shadow p-4 w-56">(Add menu items later)</div>
-        </div>
-        <div class="group relative cursor-pointer">
-          <a href="dtf.html">DTF Transfers</a>
-          <div class="absolute hidden group-hover:block bg-white text-black mt-2 rounded shadow p-4 w-56">(Add menu items later)</div>
-        </div>
-        <div class="group relative cursor-pointer">
-          <a href="stickers.html">Stickers</a>
-          <div class="absolute hidden group-hover:block bg-white text-black mt-2 rounded shadow p-4 w-56">(Add menu items later)</div>
-        </div>
-      </nav>
-    </div>
-  </div>
-</header>
+      init() {
+        this.generateServiceCards();
+        this.setupEventListeners();
+        this.createParticles();
+        this.setupKeyboardNavigation();
+      }
 
+      generateServiceCards() {
+        this.container.innerHTML = this.serviceData.map(service => `
+          <div class="service-card ${service.color}" 
+               data-service-id="${service.id}"
+               role="button" 
+               tabindex="0" 
+               aria-expanded="false" 
+               aria-label="View ${service.title} services">
+            
+            ${service.isEmergency ? '<div class="emergency-badge">24/7</div>' : ''}
+            
+            <button class="close-btn" 
+                    aria-label="Close ${service.title} services" 
+                    style="display: none;">
+              ×
+            </button>
+            
+            <div class="service-card-header">
+              <div class="service-icon">${service.icon}</div>
+              <div class="service-info">
+                <h3>${service.title}</h3>
+                <p>${service.description}</p>
+              </div>
+            </div>
+            
+            <div class="related-services">
+              ${service.related.map((item, index) => `
+                <div class="related-card" 
+                     tabindex="0" 
+                     role="img" 
+                     aria-label="${item.title}: ${item.description}"
+                     style="animation-delay: ${index * 0.1}s;">
+                  <img src="${item.image}" 
+                       alt="${item.title}" 
+                       class="related-card-image" 
+                       loading="lazy">
+                  <h4>${item.title}</h4>
+                  <p>${item.description}</p>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `).join('');
+      }
 
+      setupEventListeners() {
+        this.container.addEventListener('click', (e) => {
+          const card = e.target.closest('.service-card');
+          if (card && !this.isAnimating) {
+            if (e.target.classList.contains('close-btn')) {
+              e.stopPropagation();
+              this.collapseCard(card);
+            } else {
+              this.toggleCard(card);
+            }
+          }
+        });
 
-<footer class="bg-black text-white mt-12">
+        // Prevent image dragging
+        this.container.addEventListener('dragstart', (e) => {
+          if (e.target.tagName === 'IMG') {
+            e.preventDefault();
+          }
+        });
+      }
 
-  <!-- CLICKABLE FOOTER MAP -->
-  <section class="w-full mt-10">
-    <a href="https://www.google.com/maps/dir/?api=1&destination=6.691037226953397,-1.6575542217707613" target="_blank">
-      <div class="overflow-hidden rounded-xl shadow-lg cursor-pointer">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.6432216159174!2d-1.6575542217707613!3d6.691037226953397!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdb972992ac17d7%3A0xfa24de328cd4f1e7!2sPrintWell!5e0!3m2!1sen!2sgh!4v1767043863213!5m2!1sen!2sgh"
-          width="100%"
-          height="350"
-          style="border:0;"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>
-    </a>
-  </section>
+      setupKeyboardNavigation() {
+        this.container.addEventListener('keydown', (e) => {
+          const card = e.target.closest('.service-card');
+          if (!card) return;
 
-  <!-- FOOTER CONTENT -->
-  <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            this.toggleCard(card);
+          } else if (e.key === 'Escape' && card.classList.contains('expanded')) {
+            this.collapseCard(card);
+          }
+        });
+      }
 
-    <!-- LOGO & DESCRIPTION -->
-    <div>
-      <img src="assets/images/logo.png" class="h-12 mb-4" alt="PRINTWELL" />
-      <p class="text-sm text-gray-300">
-        PRINTWELL – Your partner in branding, design, and printing solutions. Time to dominate your market!
-      </p>
-    </div>
+      toggleCard(card) {
+        if (card.classList.contains('expanded')) {
+          this.collapseCard(card);
+        } else {
+          this.expandCard(card);
+        }
+      }
 
-    <!-- QUICK LINKS -->
-    <div>
-      <h3 class="font-bold text-lg mb-4">Quick Links</h3>
-      <ul class="space-y-2 text-gray-300 text-sm">
-        <li><a href="index.html" class="hover:text-[var(--pw-mid)]">Home</a></li>
-        <li><a href="services.html" class="hover:text-[var(--pw-mid)]">Services</a></li>
-        <li><a href="portfolio.html" class="hover:text-[var(--pw-mid)]">Portfolio</a></li>
-        <li><a href="about.html" class="hover:text-[var(--pw-mid)]">About</a></li>
-        <li><a href="contact.html" class="hover:text-[var(--pw-mid)]">Contact</a></li>
-      </ul>
-    </div>
+      expandCard(card) {
+        this.isAnimating = true;
+        
+        card.classList.add('expanded');
+        card.setAttribute('aria-expanded', 'true');
+        
+        const closeBtn = card.querySelector('.close-btn');
+        closeBtn.style.display = 'flex';
+        
+        // Focus management
+        setTimeout(() => {
+          closeBtn.focus();
+        }, 100);
 
-    <!-- CONTACT INFO -->
-    <div>
-      <h3 class="font-bold text-lg mb-4">Contact Us</h3>
-      <ul class="space-y-2 text-gray-300 text-sm">
-        <li><i class="fas fa-phone-alt mr-2"></i> (+233) 55 661 2684</li>
-        <li><i class="fas fa-envelope mr-2"></i> printwellinfos@gmail.com</li>
-        <li><i class="fas fa-map-marker-alt mr-2"></i> Patasi, Kumasi — Ghana</li>
-      </ul>
-    </div>
+        // Create emergency particles if needed
+        const serviceId = card.dataset.serviceId;
+        const service = this.serviceData.find(s => s.id === serviceId);
+        if (service && service.isEmergency) {
+          this.createEmergencyParticles(card);
+        }
 
-    <!-- NEWSLETTER & SOCIALS -->
-    <div>
-      <h3 class="font-bold text-lg mb-4">Stay Connected</h3>
-      <p class="text-gray-300 text-sm mb-4">Subscribe to our newsletter for updates and offers.</p>
-      <form class="flex flex-col sm:flex-row gap-2">
-        <input type="email" placeholder="Your email" class="flex-1 px-2 py-2 rounded-md text-black outline-none" />
-        <button class="bg-[var(--pw-light)] hover:bg-[var(--pw-dark)] px-3 py-2 rounded-md font-bold text-white">
-          Subscribe
-        </button>
-      </form>
-      <div class="flex gap-4 mt-4 text-xl">
-        <a href="#" class="hover:text-[var(--pw-mid)]" aria-label="Facebook">f</a>
-        <a href="#" class="hover:text-[var(--pw-mid)]" aria-label="Twitter">X</a>
-        <a href="#" class="hover:text-[var(--pw-mid)]" aria-label="Instagram">◎</a>
-        <a href="#" class="hover:text-[var(--pw-mid)]" aria-label="LinkedIn">in</a>
-      </div>
-    </div>
+        setTimeout(() => {
+          this.isAnimating = false;
+        }, 600);
+      }
 
-  </div>
+      collapseCard(card) {
+        this.isAnimating = true;
+        
+        card.classList.remove('expanded');
+        card.setAttribute('aria-expanded', 'false');
+        
+        const closeBtn = card.querySelector('.close-btn');
+        closeBtn.style.display = 'none';
+        
+        // Remove emergency particles
+        this.removeEmergencyParticles(card);
+        
+        setTimeout(() => {
+          this.isAnimating = false;
+          card.focus();
+        }, 400);
+      }
 
-  <div class="border-t border-gray-800 mt-8 py-4 text-center text-gray-400 text-sm">
-    &copy; 2025 PRINTWELL. All rights reserved.
-  </div>
+      createParticles() {
+        // Create background particles
+        for (let i = 0; i < 20; i++) {
+          const particle = document.createElement('div');
+          particle.className = 'particle';
+          particle.style.left = Math.random() * 100 + '%';
+          particle.style.animationDelay = Math.random() * 6 + 's';
+          particle.style.animationDuration = (Math.random() * 3 + 4) + 's';
+          this.particlesContainer.appendChild(particle);
+        }
+      }
 
-</footer>
+      createEmergencyParticles(card) {
+        // Create emergency-themed particles around the card
+        for (let i = 0; i < 10; i++) {
+          const particle = document.createElement('div');
+          particle.className = 'particle emergency';
+          particle.style.position = 'absolute';
+          particle.style.width = '6px';
+          particle.style.height = '6px';
+          particle.style.background = i % 2 === 0 ? 'var(--emergency-red)' : 'var(--emergency-orange)';
+          particle.style.left = Math.random() * 100 + '%';
+          particle.style.top = Math.random() * 100 + '%';
+          particle.style.animation = 'float 3s infinite linear';
+          particle.style.animationDelay = Math.random() * 2 + 's';
+          card.appendChild(particle);
+        }
+      }
 
-<script src="assets.js" defer></script>
-<script src="newsletter.js" defer></script>
-<script src="chat.js" defer></script>
+      removeEmergencyParticles(card) {
+        const emergencyParticles = card.querySelectorAll('.particle.emergency');
+        emergencyParticles.forEach(particle => particle.remove());
+      }
+    }
+
+    // Initialize enhanced portfolio
+    document.addEventListener('DOMContentLoaded', () => {
+      new EnhancedPortfolio();
+    });
+
+    // Load header component
+    fetch('components/header.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('main-header').innerHTML = html;
+      })
+      .catch(error => console.error('Error loading header:', error));
+  </script>
+<script src="components/tawk-widget.js"></script>
+
+</body>
+</html>

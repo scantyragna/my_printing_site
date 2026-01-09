@@ -1,0 +1,95 @@
+<header class="shadow-lg sticky top-0 z-50 w-full">
+
+  <!-- TOP SECTION -->
+  <div class="relative text-[var(--hdr-text)] w-full px-0 pt-2 pb-6 flex items-center justify-center" style="background: var(--hdr-bg)">
+    <!-- LEFT: LOGO -->
+    <div class="absolute left-0 top-1/2 -translate-y-1/2 flex items-center gap-6 pl-6 z-20">
+      <img src="assets/images/logo.png" class="h-12" alt="PRINTWELL" />
+      <div class="leading-tight">
+        <h1 class="text-2xl font-extrabold tracking-wide mb-1">PRINTWELL</h1>
+        <p class="text-sm font-bold" style="background: linear-gradient(to right, var(--pw-mid), var(--pw-dark)); background-clip: text; -webkit-background-clip: text; color: transparent;">TIME TO DOMINATE</p>
+      </div>
+    </div>
+
+    <!-- CENTER: DESKTOP MENU -->
+    <nav id="pw-top-nav" class="hidden lg:flex flex-row gap-6 text-sm font-semibold uppercase justify-center">
+      <a class="hover:text-[var(--accent)]" href="index.html">Home</a>
+      <a class="hover:text-[var(--accent)]" href="contact.html">Contact</a>
+      <a class="hover:text-[var(--accent)]" href="services.html">Services</a>
+      <a class="hover:text-[var(--accent)]" href="portfolio.html">Portfolio</a>
+      <a class="hover:text-[var(--accent)]" href="about.html">About</a>
+      <a class="hover:text-[var(--accent)]" href="faqs.html">FAQ's</a>
+    </nav>
+
+    <!-- MOBILE TOGGLE -->
+    <button class="absolute right-0 top-1/2 -translate-y-1/2 lg:hidden text-3xl text-white pr-4 z-20" type="button" aria-label="Toggle menu" onclick="document.getElementById('pw-top-nav').classList.toggle('lg:!hidden')">☰</button>
+  </div>
+
+  <!-- DIVIDER -->
+  <div style="height: 4px; background: var(--pw-mid);"></div>
+
+  <!-- LOWER SECTION -->
+  <div class="text-white w-full px-4 py-6" style="background: var(--hdr-bg); border-top: 2px solid var(--accent);">
+    <!-- SEARCH -->
+    <div class="flex justify-center mb-4">
+      <div class="group relative flex items-center bg-white rounded-full overflow-hidden w-full max-w-2xl border-2 border-[var(--accent)] transition-all duration-300 ease-in-out focus-within:ring-2 focus-within:ring-[var(--accent)]" aria-label="Site search" role="search">
+        <button class="px-4 text-[var(--accent)] text-xl transition-transform duration-300 ease-in-out group-focus-within:rotate-90" aria-label="Open search" type="button">🔍</button>
+        <input type="text" placeholder="Search" aria-label="Search input" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="pw-search-overlay" class="flex-1 px-4 py-2 outline-none text-black transition-all duration-300 ease-in-out placeholder-gray-500" />
+        <div aria-hidden="true" class="absolute right-3 hidden group-[.pw-loading]:block">
+          <div class="animate-spin h-5 w-5 border-2 border-gray-300 border-t-[var(--accent)] rounded-full"></div>
+        </div>
+      </div>
+    </div>
+    <script src="assets/search.test.js"></script>
+
+    <!-- DROPDOWNS -->
+    <nav class="flex flex-wrap gap-8 justify-center font-bold uppercase text-sm" role="menubar" aria-label="Product categories">
+      <div class="group relative cursor-pointer" role="none">
+        <a href="apparel.html" class="hover:text-[var(--accent)]" aria-haspopup="true" aria-label="Custom Apparel" role="menuitem">Custom Apparel</a>
+        <div class="absolute hidden group-hover:block group-focus-within:block bg-white text-black mt-2 rounded shadow p-2 w-56 left-0 top-full" role="menu" aria-label="Custom Apparel menu">
+          <a href="apparel.html" role="menuitem" class="block px-3 py-2 rounded hover:bg-gray-100 hover:text-[var(--accent)]">Overview</a>
+          <a href="unisex-tshirts.html" role="menuitem" class="block px-3 py-2 rounded hover:bg-gray-100 hover:text-[var(--accent)]">Unisex T-Shirts</a>
+          <a href="sweatshirts.html" role="menuitem" class="block px-3 py-2 rounded hover:bg-gray-100 hover:text-[var(--accent)]">Sweatshirts</a>
+          <a href="womens.html" role="menuitem" class="block px-3 py-2 rounded hover:bg-gray-100 hover:text-[var(--accent)]">Women</a>
+          <a href="youth.html" role="menuitem" class="block px-3 py-2 rounded hover:bg-gray-100 hover:text-[var(--accent)]">Youth</a>
+          <a href="jackets.html" role="menuitem" class="block px-3 py-2 rounded hover:bg-gray-100 hover:text-[var(--accent)]">Jackets</a>
+          <a href="hats.html" role="menuitem" class="block px-3 py-2 rounded hover:bg-gray-100 hover:text-[var(--accent)]">Hats</a>
+          <a href="polos.html" role="menuitem" class="block px-3 py-2 rounded hover:bg-gray-100 hover:text-[var(--accent)]">Polos</a>
+          <a href="workwear.html" role="menuitem" class="block px-3 py-2 rounded hover:bg-gray-100 hover:text-[var(--accent)]">Workwear</a>
+        </div>
+      </div>
+      <div class="group relative cursor-pointer" role="none">
+        <a href="vehicle_wraps.html" class="hover:text-[var(--accent)]" aria-haspopup="true" aria-label="Vehicle Wraps" role="menuitem">Vehicle Wraps</a>
+        <div class="absolute hidden group-hover:block group-focus-within:block bg-white text-black mt-2 rounded shadow p-2 w-56 left-0 top-full" role="menu" aria-label="Vehicle Wraps menu">
+          <a href="vehicle_wraps.html" role="menuitem" class="block px-3 py-2 rounded hover:bg-gray-100 hover:text-[var(--accent)]">Overview</a>
+          <a href="windowgraphics.html" role="menuitem" class="block px-3 py-2 rounded hover:bg-gray-100 hover:text-[var(--accent)]">Window Graphics</a>
+        </div>
+      </div>
+      <div class="group relative cursor-pointer" role="none">
+        <a href="banners.html" class="hover:text-[var(--accent)]" aria-haspopup="true" aria-label="Signs" role="menuitem">Signs</a>
+        <div class="absolute hidden group-hover:block group-focus-within:block bg-white text-black mt-2 rounded shadow p-2 w-56 left-0 top-full" role="menu" aria-label="Signs menu">
+          <a href="banners.html" role="menuitem" class="block px-3 py-2 rounded hover:bg-gray-100 hover:text-[var(--accent)]">Banners</a>
+          <a href="posters.html" role="menuitem" class="block px-3 py-2 rounded hover:bg-gray-100 hover:text-[var(--accent)]">Posters</a>
+          <a href="stationary.html" role="menuitem" class="block px-3 py-2 rounded hover:bg-gray-100 hover:text-[var(--accent)]">Stationary</a>
+          <a href="menus.html" role="menuitem" class="block px-3 py-2 rounded hover:bg-gray-100 hover:text-[var(--accent)]">Menus</a>
+          <a href="digitalmenus.html" role="menuitem" class="block px-3 py-2 rounded hover:bg-gray-100 hover:text-[var(--accent)]">Digital Menus</a>
+          <a href="promo-printing.html" role="menuitem" class="block px-3 py-2 rounded hover:bg-gray-100 hover:text-[var(--accent)]">Promo Printing</a>
+        </div>
+      </div>
+      <div class="group relative cursor-pointer" role="none">
+        <a href="dtf.html" class="hover:text-[var(--accent)]" aria-haspopup="true" aria-label="DTF Transfers" role="menuitem">DTF Transfers</a>
+        <div class="absolute hidden group-hover:block group-focus-within:block bg-white text-black mt-2 rounded shadow p-2 w-56 left-0 top-full" role="menu" aria-label="DTF Transfers menu">
+          <a href="dtf.html" role="menuitem" class="block px-3 py-2 rounded hover:bg-gray-100 hover:text-[var(--accent)]">Overview</a>
+        </div>
+      </div>
+      <div class="group relative cursor-pointer" role="none">
+        <a href="stickers.html" class="hover:text-[var(--accent)]" aria-haspopup="true" aria-label="Stickers" role="menuitem">Stickers</a>
+        <div class="absolute hidden group-hover:block group-focus-within:block bg-white text-black mt-2 rounded shadow p-2 w-56 left-0 top-full" role="menu" aria-label="Stickers menu">
+          <a href="stickers.html" role="menuitem" class="block px-3 py-2 rounded hover:bg-gray-100 hover:text-[var(--accent)]">Custom Stickers</a>
+          <a href="decals.html" role="menuitem" class="block px-3 py-2 rounded hover:bg-gray-100 hover:text-[var(--accent)]">Decals</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+</header>

@@ -1,11 +1,9 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
-const chatHandler = require('./api/chat');
-const adminHandler = require('./api/admin');
-const auth = require('./api/auth');
+const newsletterHandler = require('./api/newsletter');
 
-const PORT = 8000;
+const PORT = process.env.PORT || 3000;
 
 const MIME_TYPES = {
   '.html': 'text/html',
@@ -14,32 +12,25 @@ const MIME_TYPES = {
   '.json': 'application/json',
   '.png': 'image/png',
   '.jpg': 'image/jpeg',
+  '.jpeg': 'image/jpeg',
   '.gif': 'image/gif',
   '.svg': 'image/svg+xml',
   '.ico': 'image/x-icon',
+  '.webp': 'image/webp',
 };
 
 const server = http.createServer((req, res) => {
   console.log(`${req.method} ${req.url}`);
 
-  // API Routes
   const url = new URL(req.url, `http://${req.headers.host}`);
   const pathname = url.pathname;
 
-  if (pathname === '/api/chat') {
-    return chatHandler(req, res);
-  }
-  if (pathname === '/api/admin') {
-    return adminHandler(req, res);
-  }
-  if (pathname === '/api/login') {
-    return auth.handleLogin(req, res);
+  if (pathname === '/api/newsletter') {
+    return newsletterHandler(req, res);
   }
 
-  // Static File Serving
   let filePath = path.join(__dirname, pathname === '/' ? 'index.html' : pathname);
   
-  // Prevent directory traversal
   if (!filePath.startsWith(__dirname)) {
     res.statusCode = 403;
     res.end('Forbidden');
@@ -50,7 +41,6 @@ const server = http.createServer((req, res) => {
   
   fs.stat(filePath, (err, stats) => {
     if (err || !stats.isFile()) {
-      // Serve placeholder for missing images
       if (['.jpg', '.jpeg', '.png', '.gif', '.webp'].includes(ext)) {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'image/svg+xml');

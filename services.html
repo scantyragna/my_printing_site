@@ -2,14 +2,16 @@
 <html>
 <head>
   <meta charset="utf-8" />
+  <title>Services — PRINTWELL</title>
+
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PRINTWELL</title>
   <script src="assets/vendor/tailwindcss.js"></script>
   <script src="assets/search.js"></script>
-  <link rel="stylesheet" href="assets/responsive.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/responsive.css">
+
   <style>
     :root {
       --pw-light: #070706;
@@ -32,88 +34,16 @@
   class="min-h-screen"
 >
 
+<div id="main-header"></div>
+<!-- PAGE TITLE BAR -->
+<div class="w-full flex items-center justify-center text-[var(--title-text)] text-3xl font-extrabold tracking-wide" style="height: 110px; background: var(--title-bg); border-bottom: 2px solid var(--accent);">
+  DESIGN & PRINTING SERVICES
+</div>
+
 <section class="max-w-7xl mx-auto px-15 py-0 bg-white/70 rounded-2xl shadow-sm">
 
-
-<header class="shadow-lg sticky top-0 z-50">
-
-  <!-- TOP BAR -->
-  <div class="text-[var(--hdr-text)]" style="background: var(--hdr-bg)">
-    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-0">
-      <!-- LOGO -->
-      <div class="flex items-center gap-3">
-        <img src="assets/images/logo.png" class="h-12" alt="PRINTWELL" />
-        <div class="leading-tight">
-          <h1 class="text-2xl font-extrabold tracking-wide">PRINTWELL</h1>
-          <p class="text-sm font-bold" style="background: linear-gradient(to right, var(--pw-mid), var(--pw-dark)); background-clip: text; -webkit-background-clip: text; color: transparent;">TIME TO DOMINATE</p>
-        </div>
-      </div>
-
-      <!-- DESKTOP MENU -->
-      <nav id="pw-top-nav" class="hidden lg:flex flex-col lg:flex-row gap-6 text-sm font-semibold uppercase">
-        <a class="hover:text-[var(--accent)]" href="index.html">Home</a>
-        <a class="hover:text-[var(--accent)]" href="contact.html">Contact</a>
-        <a class="hover:text-[var(--accent)]" href="services.html">Services</a>
-        <a class="hover:text-[var(--accent)]" href="portfolio.html">Portfolio</a>
-        <a class="hover:text-[var(--accent)]" href="about.html">About</a>
-        <a class="hover:text-[var(--accent)]" href="faqs.html">FAQ’s</a>
-      </nav>
-
-      <!-- ICONS -->
-      <div class="hidden lg:flex items-center gap-6 text-sm">
-        <div class="flex items-center gap-2">📞 <span>Contact</span></div>
-        <div class="flex items-center gap-2 cursor-pointer">🛒 <span>Cart</span></div>
-      </div>
-
-      <!-- MOBILE TOGGLE -->
-      <button class="lg:hidden text-3xl text-white" type="button" aria-label="Toggle menu" onclick="document.getElementById('pw-top-nav').classList.toggle('hidden')">☰</button>
-    </div>
-  </div>
-
-  <!-- LIGHT BLUE DIVIDER -->
-  <div style="height: 4px; background: var(--pw-mid);"></div>
-
-  <!-- LOWER SECTION -->
-  <div style="background: var(--hdr-bg); border-top: 2px solid var(--accent);" class="text-white">
-    <div class="max-w-7xl mx-auto px-6 py-4">
-      <!-- SEARCH -->
-      <div class="flex justify-center mb-4">
-        <div class="flex items-center bg-white rounded-full overflow-hidden w-full max-w-2xl border-2 border-[var(--accent)]">
-          <input type="text" placeholder="Search" class="flex-1 px-4 py-2 outline-none text-black focus:outline-none focus:ring-2 focus:ring-[var(--accent)]" />
-          <button class="px-4 text-white text-xl bg-[var(--accent)] hover:opacity-90">🔍</button>
-        </div>
-      </div>
-      <!-- DROPDOWNS -->
-      <nav class="flex flex-wrap gap-8 justify-center font-bold uppercase text-sm">
-        <div class="group relative cursor-pointer">
-          <a href="apparel.html">Custom Apparel</a>
-          <div class="absolute hidden group-hover:block bg-white text-black mt-2 rounded shadow p-4 w-56">(Add menu items later)</div>
-        </div>
-        <div class="group relative cursor-pointer">
-          <a href="vehicle_wraps.html">Vehicle Wraps</a>
-          <div class="absolute hidden group-hover:block bg-white text-black mt-2 rounded shadow p-4 w-56">(Add menu items later)</div>
-        </div>
-        <div class="group relative cursor-pointer">
-          <a href="banners.html">Signs</a>
-          <div class="absolute hidden group-hover:block bg-white text-black mt-2 rounded shadow p-4 w-56">(Add menu items later)</div>
-        </div>
-        <div class="group relative cursor-pointer">
-          <a href="dtf.html">DTF Transfers</a>
-          <div class="absolute hidden group-hover:block bg-white text-black mt-2 rounded shadow p-4 w-56">(Add menu items later)</div>
-        </div>
-        <div class="group relative cursor-pointer">
-          <a href="stickers.html">Stickers</a>
-          <div class="absolute hidden group-hover:block bg-white text-black mt-2 rounded shadow p-4 w-56">(Add menu items later)</div>
-        </div>
-      </nav>
-    </div>
-  </div>
-</header>
-
 <!-- PAGE TITLE BAR -->
-<section class="w-full flex items-center justify-center text-[var(--title-text)] text-3xl font-extrabold tracking-wide" style="height: 110px; background: var(--title-bg); border-bottom: 2px solid var(--accent);">
-  DESIGN & PRINTING SERVICES
-</section>
+
 
 <!-- SECTIONS -->
 <!-- BUILD YOUR BRAND -->
@@ -215,17 +145,17 @@
 
   <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-    <a href="posters.html" class="group block rounded-xl overflow-hidden shadow-lg bg-white transition transform hover:-translate-y-1 hover:shadow-2xl relative">
+    <!-- Banners -->
+    <a href="banners.html" class="group block rounded-xl overflow-hidden shadow-lg bg-white transition transform hover:-translate-y-1 hover:shadow-2xl relative">
       <div class="relative h-60">
         <!-- Slideshow with img src -->
-        <div class="slideshow h-full w-full" data-images='["images/posters/img1.jpg","images/posters/img2.jpg","images/posters/img3.jpg"]'>
-          <img src="images/banners/image1.jpg" class="absolute inset-0 w-full h-full object-cover" alt="Posters">
+        <div class="slideshow h-full w-full" data-images='["images/apparels/img1.jpg","images/apparels/img2.jpg","images/apparels/img3.jpg"]'>
+          <img src="images/banners/image.jpg" class="absolute inset-0 w-full h-full object-cover" alt="Apparels">
         </div>
 
         <!-- Text overlay at bottom center -->
         <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 text-white font-bold px-4 py-2 rounded text-center">
-          Banners
-        </div>
+            Banners      </div>
       </div>
     </a>
 
@@ -280,7 +210,7 @@
 
         <!-- Text overlay at bottom center -->
         <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 text-white font-bold px-4 py-2 rounded text-center">
-          digitalmenus
+          Digital menus
         </div>
       </div>
     </a>
@@ -475,33 +405,9 @@
 
 </footer>
 
+<script src="assets/js/layout.js"></script>
 <script src="assets.js" defer></script>
 <script src="newsletter.js" defer></script>
-<script src="chat.js" defer></script>
-<script>
-(function(){
-  var svgFallback='data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800"><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="%23e5e7eb"/><stop offset="1" stop-color="%23d1d5db"/></linearGradient></defs><rect width="100%" height="100%" fill="url(%23g)"/><text x="50%" y="50%" text-anchor="middle" fill="%236b7280" font-family="Arial, sans-serif" font-size="48">Image unavailable</text></svg>';
-  var imgs=document.querySelectorAll('img[data-enhanced-image]');
-  for(var i=0;i<imgs.length;i++){
-    (function(img){
-      var container=img.closest('.relative');
-      var placeholder=container?container.querySelector('.img-placeholder'):null;
-      var fallback=container?container.querySelector('.img-fallback'):null;
-      var hidePlaceholder=function(){ if(placeholder){ placeholder.classList.add('opacity-0'); } };
-      var showFallback=function(){
-        img.src=svgFallback;
-        img.classList.remove('object-cover');
-        img.classList.add('object-contain');
-        hidePlaceholder();
-        if(fallback){ fallback.classList.remove('hidden'); fallback.classList.add('flex'); }
-      };
-      if(img.complete){
-        if(img.naturalWidth>0){ hidePlaceholder(); } else { showFallback(); }
-      }else{
-        img.addEventListener('load', function(){ hidePlaceholder(); }, { once:true });
-        img.addEventListener('error', function(){ showFallback(); }, { once:true });
-      }
-    })(imgs[i]);
-  }
-})();
-</script>
+<script src="components/tawk-widget.js"></script>
+
+</body></html>

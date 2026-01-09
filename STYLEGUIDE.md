@@ -192,3 +192,14 @@ To document visual changes:
 
 These screenshots can be stored in a `screenshots/` folder at the project root for future reference and design reviews.
 
+## 9. Chat Interfaces
+
+- User chat input area: minimum 300px height, full-width container
+- Message readability: minimum 16px font size, comfortable line-height
+- Spacing: margin between message rows and internal bubble padding
+- Accessibility: messages region has role=log and aria-live=polite; controls include aria-labels
+
+- Admin chat matches user sizing (300px input, 16px messages)
+- Visual distinction with admin accent while preserving core patterns
+- Admin-only actions (Resolve, Export) require an authenticated session
+- Security: no placeholder credentials; password must be 8+ chars; session auto-timeout on inactivity

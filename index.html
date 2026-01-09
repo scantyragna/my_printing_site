@@ -2,14 +2,16 @@
 <html>
 <head>
   <meta charset="utf-8" />
+  <title>Home — PRINTWELL</title>
+
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PRINTWELL</title>
   <script src="assets/vendor/tailwindcss.js"></script>
   <script src="assets/search.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/responsive.css">
+
   <style>
     :root {
       --pw-light: #070706;
@@ -21,12 +23,8 @@
       --title-bg: #FF4500;
       --title-text: #1F1F1F;
     }
-    h1, h2, h3, h4, h5, h6 {
-      font-family: 'Oswald', sans-serif;
-    }
-    body {
-      font-family: 'Roboto', sans-serif;
-    }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Oswald', sans-serif; }
+    body { font-family: 'Roboto', sans-serif; }
   </style>
 </head>
 <body
@@ -36,83 +34,8 @@
   class="min-h-screen"
 >
 
+<div id="main-header"></div>
 <section class="max-w-7xl mx-auto px-15 py-0 bg-white/70 rounded-2xl shadow-sm">
-
-
-<header class="shadow-lg sticky top-0 z-50">
-
-  <!-- TOP BAR -->
-  <div class="text-[var(--hdr-text)]" style="background: var(--hdr-bg)">
-    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-0">
-      <!-- LOGO -->
-      <div class="flex items-center gap-3">
-        <img src="assets/images/logo.png" class="h-12" alt="PRINTWELL" />
-        <div class="leading-tight">
-          <h1 class="text-2xl font-extrabold tracking-wide">PRINTWELL</h1>
-          <p class="text-sm font-bold" style="background: linear-gradient(to right, var(--pw-mid), var(--pw-dark)); background-clip: text; -webkit-background-clip: text; color: transparent;">TIME TO DOMINATE</p>
-        </div>
-      </div>
-
-      <!-- DESKTOP MENU -->
-      <nav id="pw-top-nav" class="hidden lg:flex flex-col lg:flex-row gap-6 text-sm font-semibold uppercase">
-        <a class="hover:text-[var(--accent)]" href="index.html">Home</a>
-        <a class="hover:text-[var(--accent)]" href="contact.html">Contact</a>
-        <a class="hover:text-[var(--accent)]" href="services.html">Services</a>
-        <a class="hover:text-[var(--accent)]" href="portfolio.html">Portfolio</a>
-        <a class="hover:text-[var(--accent)]" href="about.html">About</a>
-        <a class="hover:text-[var(--accent)]" href="faqs.html">FAQ’s</a>
-      </nav>
-
-      <!-- ICONS -->
-      <div class="hidden lg:flex items-center gap-6 text-sm">
-        <div class="flex items-center gap-2">📞 <span>Contact</span></div>
-        <div class="flex items-center gap-2 cursor-pointer">🛒 <span>Cart</span></div>
-      </div>
-
-      <!-- MOBILE TOGGLE -->
-      <button class="lg:hidden text-3xl text-white" type="button" aria-label="Toggle menu" onclick="document.getElementById('pw-top-nav').classList.toggle('hidden')">☰</button>
-    </div>
-  </div>
-
-  <!-- LIGHT BLUE DIVIDER -->
-  <div style="height: 4px; background: var(--pw-mid);"></div>
-
-  <!-- LOWER SECTION -->
-  <div class="text-white" style="background: var(--hdr-bg); border-top: 2px solid var(--accent);">
-    <div class="max-w-7xl mx-auto px-6 py-4">
-      <!-- SEARCH -->
-      <div class="flex justify-center mb-4">
-        <div class="flex items-center bg-white rounded-full overflow-hidden w-full max-w-2xl border-2 border-[var(--accent)]">
-          <input type="text" placeholder="Search" class="flex-1 px-4 py-2 outline-none text-black focus:outline-none focus:ring-2 focus:ring-[var(--accent)]" />
-          <button class="px-4 text-white text-xl bg-[var(--accent)] hover:opacity-90">🔍</button>
-        </div>
-      </div>
-      <!-- DROPDOWNS -->
-      <nav class="flex flex-wrap gap-8 justify-center font-bold uppercase text-sm">
-        <div class="group relative cursor-pointer">
-          <a href="apparel.html">Custom Apparel</a>
-          <div class="absolute hidden group-hover:block bg-white text-black mt-2 rounded shadow p-4 w-56">(Add menu items later)</div>
-        </div>
-        <div class="group relative cursor-pointer">
-          <a href="vehicle_wraps.html">Vehicle Wraps</a>
-          <div class="absolute hidden group-hover:block bg-white text-black mt-2 rounded shadow p-4 w-56">(Add menu items later)</div>
-        </div>
-        <div class="group relative cursor-pointer">
-          <a href="banners.html">Signs</a>
-          <div class="absolute hidden group-hover:block bg-white text-black mt-2 rounded shadow p-4 w-56">(Add menu items later)</div>
-        </div>
-        <div class="group relative cursor-pointer">
-          <a href="dtf.html">DTF Transfers</a>
-          <div class="absolute hidden group-hover:block bg-white text-black mt-2 rounded shadow p-4 w-56">(Add menu items later)</div>
-        </div>
-        <div class="group relative cursor-pointer">
-          <a href="stickers.html">Stickers</a>
-          <div class="absolute hidden group-hover:block bg-white text-black mt-2 rounded shadow p-4 w-56">(Add menu items later)</div>
-        </div>
-      </nav>
-    </div>
-  </div>
-</header>
 
 <!-- HERO CAROUSEL -->
 <!-- Include Swiper CSS -->
@@ -121,7 +44,7 @@
   href="assets/vendor/swiper-bundle.min.css"
 />
 
-<section class="max-w-9.3A9.3xl mx-auto px-15 py-4">
+<section class="max-w-9xl mx-auto px-16 py-4">
   <div class="swiper mySwiper rounded-2xl overflow-hidden shadow-lg">
     <div class="swiper-wrapper">
 
@@ -279,15 +202,15 @@
 
       <!-- BANNERS -->
       <a href="banners.html" class="group block rounded-xl overflow-hidden shadow-lg bg-white">
-        <div 
+<div 
           class="relative h-60 slideshow"
-          data-images='["images/banners/image1.jpg","images/banners/image2.jpg","images/banners/image3.jpg"]'
+          data-images='["images/banners/image.jpg","images/banners/image1.jpg","images/banners/image2.jpg"]'
         ></div>
         <div class="p-4 text-center font-bold text-lg">Banners</div>
       </a>
 
-      <!-- A-FRAMES -->
-      <a href="aframes.html" class="group block rounded-xl overflow-hidden shadow-lg bg-white">
+      <!-- Image Frames -->
+      <a href="frames.html" class="group block rounded-xl overflow-hidden shadow-lg bg-white">
         <div 
           class="relative h-60 slideshow"
           data-images='["images/frames/image.jpg","images/frames/image2.jpg","images/frames/image3.jpg"]'
@@ -408,12 +331,27 @@ document.addEventListener('DOMContentLoaded', function() {
       images = [];
     }
     if (!Array.isArray(images) || images.length === 0) return;
+    
     var index = 0;
     var imgElement = document.createElement('img');
     imgElement.src = images[index];
     imgElement.className = slide.classList.contains('pw-slideshow-rounded')
       ? 'w-full h-full object-cover rounded-2xl'
       : 'w-full h-full object-cover';
+    
+    // Add error handling for missing images
+    imgElement.addEventListener('error', function() {
+      // Try next image if current one fails
+      var nextIndex = (index + 1) % images.length;
+      if (nextIndex !== index) {
+        index = nextIndex;
+        imgElement.src = images[index];
+      } else {
+        // If all images fail, show placeholder
+        imgElement.src = 'data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><rect width="100%" height="100%" fill="%23f3f4f6"/><text x="50%" y="50%" text-anchor="middle" fill="%236b7280" font-family="Arial, sans-serif" font-size="16">Image unavailable</text></svg>';
+      }
+    });
+    
     slide.appendChild(imgElement);
     setInterval(function() {
       index = (index + 1) % images.length;
@@ -509,85 +447,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- FOOTER stays the same as in home.html -->
  <!-- FOOTER -->
-<footer class="bg-black text-white mt-12">
+<div id="main-footer"></div>
 
-  <!-- CLICKABLE FOOTER MAP -->
-  <section class="w-full mt-10">
-    <a href="https://www.google.com/maps/dir/?api=1&destination=6.691037226953397,-1.6575542217707613" target="_blank">
-      <div class="overflow-hidden rounded-xl shadow-lg cursor-pointer">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.6432216159174!2d-1.6575542217707613!3d6.691037226953397!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdb972992ac17d7%3A0xfa24de328cd4f1e7!2sPrintWell!5e0!3m2!1sen!2sgh!4v1767043863213!5m2!1sen!2sgh"
-          width="100%"
-          height="350"
-          style="border:0;"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>
-    </a>
-  </section>
+<script src="assets/js/layout.js"></script>
 
-  <!-- FOOTER CONTENT -->
-  <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
-
-    <!-- LOGO & DESCRIPTION -->
-    <div>
-      <img src="assets/images/logo.png" class="h-12 mb-4" alt="PRINTWELL" />
-      <p class="text-sm text-gray-300">
-        PRINTWELL – Your partner in branding, design, and printing solutions. Time to dominate your market!
-      </p>
-    </div>
-
-    <!-- QUICK LINKS -->
-    <div>
-      <h3 class="font-bold text-lg mb-4">Quick Links</h3>
-      <ul class="space-y-2 text-gray-300 text-sm">
-        <li><a href="index.html" class="hover:text-[var(--pw-mid)]">Home</a></li>
-        <li><a href="services.html" class="hover:text-[var(--pw-mid)]">Services</a></li>
-        <li><a href="portfolio.html" class="hover:text-[var(--pw-mid)]">Portfolio</a></li>
-        <li><a href="about.html" class="hover:text-[var(--pw-mid)]">About</a></li>
-        <li><a href="contact.html" class="hover:text-[var(--pw-mid)]">Contact</a></li>
-      </ul>
-    </div>
-
-    <!-- CONTACT INFO -->
-    <div>
-      <h3 class="font-bold text-lg mb-4">Contact Us</h3>
-      <ul class="space-y-2 text-gray-300 text-sm">
-        <li><span class="mr-2">📞</span> (+233) 55 661 2684</li>
-        <li><span class="mr-2">✉️</span> printwellinfos@gmail.com</li>
-        <li><span class="mr-2">📍</span> Patasi, Kumasi — Ghana</li>
-      </ul>
-    </div>
-
-    <!-- NEWSLETTER & SOCIALS -->
-    <div>
-      <h3 class="font-bold text-lg mb-4">Stay Connected</h3>
-      <p class="text-gray-300 text-sm mb-4">Subscribe to our newsletter for updates and offers.</p>
-      <form class="flex flex-col sm:flex-row gap-2">
-        <input type="email" placeholder="Your email" class="flex-1 px-2 py-2 rounded-md text-black outline-none" />
-        <button class="bg-[var(--pw-light)] hover:bg-[var(--pw-dark)] px-3 py-2 rounded-md font-bold text-white">
-          Subscribe
-        </button>
-      </form>
-      <div class="flex gap-4 mt-4 text-xl">
-        <a href="#" class="hover:text-[var(--pw-mid)]" aria-label="Facebook">f</a>
-        <a href="#" class="hover:text-[var(--pw-mid)]" aria-label="Twitter">X</a>
-        <a href="#" class="hover:text-[var(--pw-mid)]" aria-label="Instagram">◎</a>
-        <a href="#" class="hover:text-[var(--pw-mid)]" aria-label="LinkedIn">in</a>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="border-t border-gray-800 mt-8 py-4 text-center text-gray-400 text-sm">
-    &copy; 2025 PRINTWELL. All rights reserved.
-  </div>
-
-</footer>
 
 <script src="assets.js" defer></script>
 <script src="content.js" defer></script>
 <script src="newsletter.js" defer></script>
-<script src="chat.js" defer></script>
+
+<script src="components/tawk-widget.js"></script>
+
+ 
