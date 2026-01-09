@@ -16,6 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
           s.defer = true;
           document.head.appendChild(s);
         }
+        if (typeof initLazyLoading === 'function') {
+          initLazyLoading();
+        }
       })
       .catch(err => console.error('Failed to load header:', err));
   }

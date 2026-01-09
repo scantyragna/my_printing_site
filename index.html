@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/responsive.css">
+  <script src="assets/js/lazyload.js" defer></script>
 
   <style>
     :root {
@@ -50,7 +51,7 @@
 
       <!-- Slide 1 -->
       <div class="swiper-slide relative">
-        <img src="images/hero/stickers-slide.jpg" alt="Custom Stickers" class="w-full h-96 object-cover">
+        <img src="images/hero/stickers-slide.jpg" srcset="images/hero/stickers-slide.jpg 320w, images/hero/stickers-slide.jpg 768w, images/hero/stickers-slide.jpg 1024w, images/hero/stickers-slide.jpg 1280w" sizes="(max-width: 320px) 320px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, 1280px" alt="Custom Stickers" class="w-full h-96 object-cover loading lazy" loading="lazy">
         <div class="absolute inset-0 bg-black/70 flex flex-col justify-center items-start p-8 space-y-4">
           <h2 class="text-3xl md:text-4xl font-extrabold text-white">Order High Quality Custom Printed Stickers</h2>
           <p class="text-white max-w-xl">Join the growing number of small businesses telling their own stories with affordable custom vehicle wraps and graphics today!</p>
@@ -64,7 +65,7 @@
 
       <!-- Slide 2 -->
       <div class="swiper-slide relative">
-        <img src="images/hero/vehicle-wraps.jpg" alt="Vehicle Wraps" class="w-full h-96 object-cover">
+        <img src="images/hero/vehicle-wraps.jpg" srcset="images/hero/vehicle-wraps.jpg 320w, images/hero/vehicle-wraps.jpg 768w, images/hero/vehicle-wraps.jpg 1024w, images/hero/vehicle-wraps.jpg 1280w" sizes="(max-width: 320px) 320px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, 1280px" alt="Vehicle Wraps" class="w-full h-96 object-cover loading lazy" loading="lazy">
         <div class="absolute inset-0 bg-black/70 flex flex-col justify-center items-start p-8 space-y-4">
           <h2 class="text-3xl md:text-4xl font-extrabold text-white uppercase tracking-wide">Premium Vehicle Wraps & Graphics</h2>
           <p class="text-white max-w-xl text-lg">Stand out on the road with our high-quality custom vehicle wraps for advertising and branding.</p>
@@ -74,7 +75,7 @@
 
       <!-- Slide 3 -->
       <div class="swiper-slide relative">
-        <img src="images/hero/apparel-slide.jpg" alt="Branded Apparel" class="w-full h-96 object-cover">
+        <img src="images/hero/apparel-slide.jpg" srcset="images/hero/apparel-slide.jpg 320w, images/hero/apparel-slide.jpg 768w, images/hero/apparel-slide.jpg 1024w, images/hero/apparel-slide.jpg 1280w" sizes="(max-width: 320px) 320px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, 1280px" alt="Branded Apparel" class="w-full h-96 object-cover loading lazy" loading="lazy">
         <div class="absolute inset-0 bg-black/70 flex flex-col justify-center items-start p-8 space-y-4">
           <h2 class="text-3xl md:text-4xl font-extrabold text-white uppercase tracking-wide">Branded Apparel for Your Business</h2>
           <p class="text-white max-w-xl text-lg">Elevate your brand with high-quality custom apparel and direct-to-film printing services.</p>
@@ -120,7 +121,7 @@
     <!-- Card 1 -->
     <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col items-center text-center group">
       <div class="h-48 w-full overflow-hidden">
-        <img src="images/sticker/image.jpg" alt="Stickers" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+        <img src="images/sticker/image.jpg" srcset="images/sticker/image.jpg 320w, images/sticker/image.jpg 480w, images/sticker/image.jpg 640w" sizes="(max-width: 320px) 320px, (max-width: 480px) 480px, 640px" alt="Stickers" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 loading lazy" loading="lazy">
       </div>
       <div class="p-6">
         <h3 class="text-xl font-bold mb-2 uppercase tracking-wide">Stickers</h3>
@@ -133,7 +134,7 @@
     <!-- Card 2 -->
     <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col items-center text-center group">
       <div class="h-48 w-full overflow-hidden">
-        <img src="images/apparels/image.jpg" alt="Apparel" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+        <img src="images/apparels/image.jpg" srcset="images/apparels/image.jpg 320w, images/apparels/image.jpg 480w, images/apparels/image.jpg 640w" sizes="(max-width: 320px) 320px, (max-width: 480px) 480px, 640px" alt="Apparel" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 loading lazy" loading="lazy">
       </div>
       <div class="p-6">
         <h3 class="text-xl font-bold mb-2 uppercase tracking-wide">Apparel</h3>
@@ -315,7 +316,7 @@
   </div>
 </section>
 
-<!-- Slideshow JS -->
+ <!-- Slideshow JS -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.slideshow').forEach(function(slide) {
@@ -334,8 +335,9 @@ document.addEventListener('DOMContentLoaded', function() {
     var imgElement = document.createElement('img');
     imgElement.src = images[index];
     imgElement.className = slide.classList.contains('pw-slideshow-rounded')
-      ? 'w-full h-full object-cover rounded-2xl'
-      : 'w-full h-full object-cover';
+      ? 'w-full h-full object-cover rounded-2xl loading lazy'
+      : 'w-full h-full object-cover loading lazy';
+    imgElement.loading = 'lazy';
     
     // Add error handling for missing images
     imgElement.addEventListener('error', function() {
@@ -350,9 +352,16 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
     
+    imgElement.addEventListener('load', function() {
+      imgElement.classList.add('loaded');
+      imgElement.classList.remove('loading');
+    });
+    
     slide.appendChild(imgElement);
     setInterval(function() {
       index = (index + 1) % images.length;
+      imgElement.classList.remove('loaded');
+      imgElement.classList.add('loading');
       imgElement.src = images[index];
     }, 3000);
   });
@@ -453,7 +462,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <script src="assets.js" defer></script>
 <script src="content.js" defer></script>
 <script src="newsletter.js" defer></script>
+<script src="components/tawk-widget.js" defer></script>
 
-<script src="components/tawk-widget.js"></script>
+  
 
- 

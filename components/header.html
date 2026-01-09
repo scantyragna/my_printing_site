@@ -22,7 +22,9 @@
     </nav>
 
     <!-- MOBILE TOGGLE -->
-    <button class="absolute right-0 top-1/2 -translate-y-1/2 lg:hidden text-3xl text-white pr-4 z-20" type="button" aria-label="Toggle menu" onclick="document.getElementById('pw-top-nav').classList.toggle('lg:!hidden')">☰</button>
+    <button id="hamburger-toggle" class="absolute right-0 top-1/2 -translate-y-1/2 lg:hidden text-3xl text-white pr-4 z-20" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span class="hamburger-icon">☰</span>
+    </button>
   </div>
 
   <!-- DIVIDER -->
@@ -42,8 +44,8 @@
     </div>
     <script src="assets/search.test.js"></script>
 
-    <!-- DROPDOWNS -->
-    <nav class="flex flex-wrap gap-8 justify-center font-bold uppercase text-sm" role="menubar" aria-label="Product categories">
+    <!-- DROPDOWNS - DESKTOP -->
+    <nav class="hidden lg:flex flex-wrap gap-8 justify-center font-bold uppercase text-sm" role="menubar" aria-label="Product categories">
       <div class="group relative cursor-pointer" role="none">
         <a href="apparel.html" class="hover:text-[var(--accent)]" aria-haspopup="true" aria-label="Custom Apparel" role="menuitem">Custom Apparel</a>
         <div class="absolute hidden group-hover:block group-focus-within:block bg-white text-black mt-2 rounded shadow p-2 w-56 left-0 top-full" role="menu" aria-label="Custom Apparel menu">
@@ -91,5 +93,113 @@
       </div>
     </nav>
   </div>
+
+  <!-- MOBILE MENU -->
+  <div id="mobile-menu" class="hamburger-menu lg:hidden" role="navigation" aria-label="Mobile navigation">
+    <nav class="flex flex-col" role="menu">
+      <a href="index.html" class="px-4 py-3 border-b border-gray-700 hover:bg-gray-800" role="menuitem">Home</a>
+      <a href="contact.html" class="px-4 py-3 border-b border-gray-700 hover:bg-gray-800" role="menuitem">Contact</a>
+      <a href="services.html" class="px-4 py-3 border-b border-gray-700 hover:bg-gray-800" role="menuitem">Services</a>
+      <a href="portfolio.html" class="px-4 py-3 border-b border-gray-700 hover:bg-gray-800" role="menuitem">Portfolio</a>
+      <a href="about.html" class="px-4 py-3 border-b border-gray-700 hover:bg-gray-800" role="menuitem">About</a>
+      <a href="faqs.html" class="px-4 py-3 border-b border-gray-700 hover:bg-gray-800" role="menuitem">FAQ's</a>
+      <div class="px-4 py-3 border-b border-gray-700">
+        <button class="w-full text-left font-bold hover:text-[var(--accent)]" aria-expanded="false" aria-controls="mobile-apparel" onclick="toggleMobileSubmenu('mobile-apparel', this)">Custom Apparel ▾</button>
+        <div id="mobile-apparel" class="hidden pl-4 mt-2 space-y-1" role="menu">
+          <a href="apparel.html" class="block py-2 hover:text-[var(--accent)]">Overview</a>
+          <a href="unisex-tshirts.html" class="block py-2 hover:text-[var(--accent)]">Unisex T-Shirts</a>
+          <a href="sweatshirts.html" class="block py-2 hover:text-[var(--accent)]">Sweatshirts</a>
+          <a href="womens.html" class="block py-2 hover:text-[var(--accent)]">Women</a>
+          <a href="youth.html" class="block py-2 hover:text-[var(--accent)]">Youth</a>
+          <a href="jackets.html" class="block py-2 hover:text-[var(--accent)]">Jackets</a>
+          <a href="hats.html" class="block py-2 hover:text-[var(--accent)]">Hats</a>
+          <a href="polos.html" class="block py-2 hover:text-[var(--accent)]">Polos</a>
+          <a href="workwear.html" class="block py-2 hover:text-[var(--accent)]">Workwear</a>
+        </div>
+      </div>
+      <div class="px-4 py-3 border-b border-gray-700">
+        <button class="w-full text-left font-bold hover:text-[var(--accent)]" aria-expanded="false" aria-controls="mobile-vehicle" onclick="toggleMobileSubmenu('mobile-vehicle', this)">Vehicle Wraps ▾</button>
+        <div id="mobile-vehicle" class="hidden pl-4 mt-2 space-y-1" role="menu">
+          <a href="vehicle_wraps.html" class="block py-2 hover:text-[var(--accent)]">Overview</a>
+          <a href="windowgraphics.html" class="block py-2 hover:text-[var(--accent)]">Window Graphics</a>
+        </div>
+      </div>
+      <div class="px-4 py-3 border-b border-gray-700">
+        <button class="w-full text-left font-bold hover:text-[var(--accent)]" aria-expanded="false" aria-controls="mobile-signs" onclick="toggleMobileSubmenu('mobile-signs', this)">Signs ▾</button>
+        <div id="mobile-signs" class="hidden pl-4 mt-2 space-y-1" role="menu">
+          <a href="banners.html" class="block py-2 hover:text-[var(--accent)]">Banners</a>
+          <a href="posters.html" class="block py-2 hover:text-[var(--accent)]">Posters</a>
+          <a href="stationary.html" class="block py-2 hover:text-[var(--accent)]">Stationary</a>
+          <a href="menus.html" class="block py-2 hover:text-[var(--accent)]">Menus</a>
+          <a href="digitalmenus.html" class="block py-2 hover:text-[var(--accent)]">Digital Menus</a>
+          <a href="promo-printing.html" class="block py-2 hover:text-[var(--accent)]">Promo Printing</a>
+        </div>
+      </div>
+      <div class="px-4 py-3 border-b border-gray-700">
+        <button class="w-full text-left font-bold hover:text-[var(--accent)]" aria-expanded="false" aria-controls="mobile-dtf" onclick="toggleMobileSubmenu('mobile-dtf', this)">DTF Transfers ▾</button>
+        <div id="mobile-dtf" class="hidden pl-4 mt-2 space-y-1" role="menu">
+          <a href="dtf.html" class="block py-2 hover:text-[var(--accent)]">Overview</a>
+        </div>
+      </div>
+      <div class="px-4 py-3 border-b border-gray-700">
+        <button class="w-full text-left font-bold hover:text-[var(--accent)]" aria-expanded="false" aria-controls="mobile-stickers" onclick="toggleMobileSubmenu('mobile-stickers', this)">Stickers ▾</button>
+        <div id="mobile-stickers" class="hidden pl-4 mt-2 space-y-1" role="menu">
+          <a href="stickers.html" class="block py-2 hover:text-[var(--accent)]">Custom Stickers</a>
+          <a href="decals.html" class="block py-2 hover:text-[var(--accent)]">Decals</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <script>
+    function toggleMobileSubmenu(id, button) {
+      const submenu = document.getElementById(id);
+      const isExpanded = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', !isExpanded);
+      submenu.classList.toggle('hidden');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const hamburgerToggle = document.getElementById('hamburger-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const hamburgerIcon = document.querySelector('.hamburger-icon');
+
+      function toggleMenu() {
+        const isOpen = mobileMenu.classList.contains('active');
+        mobileMenu.classList.toggle('active');
+        hamburgerToggle.setAttribute('aria-expanded', !isOpen);
+        hamburgerIcon.textContent = isOpen ? '☰' : '✕';
+      }
+
+      hamburgerToggle.addEventListener('click', toggleMenu);
+
+      hamburgerToggle.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleMenu();
+        }
+      });
+
+      const mobileMenuLinks = mobileMenu.querySelectorAll('a, button');
+      mobileMenuLinks.forEach(link => {
+        link.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape') {
+            mobileMenu.classList.remove('active');
+            hamburgerToggle.setAttribute('aria-expanded', 'false');
+            hamburgerIcon.textContent = '☰';
+            hamburgerToggle.focus();
+          }
+        });
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!mobileMenu.contains(e.target) && !hamburgerToggle.contains(e.target)) {
+          mobileMenu.classList.remove('active');
+          hamburgerToggle.setAttribute('aria-expanded', 'false');
+          hamburgerIcon.textContent = '☰';
+        }
+      });
+    });
+  </script>
 
 </header>

@@ -63,6 +63,15 @@ const server = http.createServer((req, res) => {
 
     const contentType = MIME_TYPES[ext] || 'application/octet-stream';
     res.setHeader('Content-Type', contentType);
+    
+    if (['.css', '.js', '.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp', '.ico'].includes(ext)) {
+      res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+    } else if (ext === '.html') {
+      res.setHeader('Cache-Control', 'public, max-age=3600, must-revalidate');
+    } else {
+      res.setHeader('Cache-Control', 'public, max-age=86400');
+    }
+    
     fs.createReadStream(filePath).pipe(res);
   });
 });
