@@ -222,3 +222,12 @@ iframe,video{max-width:100%;height:auto;border-radius:8px;box-shadow:0 4px 6px r
 
 /* IMAGE ERROR HANDLING */
 img[src=""],img:not([src]){visibility:hidden}
+
+/* LOGO BACKGROUND FIX - Remove white background from logo */
+header img[src*="logo"]{
+  background:transparent!important;
+  background-color:transparent!important;
+  box-shadow:none;
+  padding:0;
+  border:none;
+}

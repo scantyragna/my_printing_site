@@ -3,7 +3,6 @@
 <head>
   <meta charset="utf-8" />
   <title>Home — PRINTWELL</title>
-
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script src="assets/vendor/tailwindcss.js"></script>
   <script src="assets/search.js"></script>
@@ -26,102 +25,332 @@
     }
     h1, h2, h3, h4, h5, h6 { font-family: 'Oswald', sans-serif; }
     body { font-family: 'Roboto', sans-serif; }
+    
+    /* Header Styles */
+    .main-header {
+      background-color: var(--hdr-bg);
+      color: var(--hdr-text);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    
+    /* Customer Care Widget Styles */
+    .customer-care-widget {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+    
+    .customer-care-button {
+      background-color: var(--pw-mid);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(255, 69, 0, 0.3);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .customer-care-button:hover {
+      background-color: var(--pw-dark);
+      transform: scale(1.1);
+    }
+    
+    .customer-care-panel {
+      position: absolute;
+      bottom: 70px;
+      right: 0;
+      width: 300px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+      display: none;
+      overflow: hidden;
+    }
+    
+    .customer-care-panel.active {
+      display: block;
+    }
+    
+    .customer-care-header {
+      background-color: var(--pw-mid);
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-weight: bold;
+    }
+    
+    .customer-care-body {
+      padding: 15px;
+    }
+    
+    .customer-care-option {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      margin-bottom: 10px;
+      background: #f8f9fa;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    
+    .customer-care-option:hover {
+      background: #e9ecef;
+    }
+    
+    .customer-care-icon {
+      margin-right: 10px;
+      font-size: 20px;
+    }
+    
+    .customer-care-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+    }
   </style>
 </head>
-<body
-  style="
-    background: #000;
-  "
-  class="min-h-screen"
->
+<body style="background: #000;" class="min-h-screen">
 
-<div id="main-header"></div>
-<section class="max-w-7xl mx-auto px-15 py-0 bg-white/70 rounded-2xl shadow-sm">
+<!-- HEADER SECTION -->
+<header class="main-header">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex justify-between items-center">
+      <!-- Logo -->
+      <div class="flex items-center">
+        <a href="index.html" class="flex items-center">
+          <img src="assets/images/logo.png" alt="PRINTWELL" class="h-12 mr-4">
+          <span class="text-2xl font-bold" style="font-family: 'Oswald', sans-serif;">PRINTWELL</span>
+        </a>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="hidden md:flex space-x-8">
+        <a href="index.html" class="text-white hover:text-[var(--pw-mid)] font-medium transition-colors">Home</a>
+        <a href="services.html" class="text-white hover:text-[var(--pw-mid)] font-medium transition-colors">Services</a>
+        <a href="portfolio.html" class="text-white hover:text-[var(--pw-mid)] font-medium transition-colors">Portfolio</a>
+        <a href="about.html" class="text-white hover:text-[var(--pw-mid)] font-medium transition-colors">About</a>
+        <a href="contact.html" class="text-white hover:text-[var(--pw-mid)] font-medium transition-colors">Contact</a>
+      </nav>
+
+      <!-- CTA Button -->
+      <a href="contact.html" class="bg-[var(--pw-mid)] hover:bg-[var(--pw-dark)] text-white font-bold px-6 py-3 rounded-lg transition-colors">
+        Get Quote
+      </a>
+
+      <!-- Mobile Menu Button -->
+      <button class="md:hidden text-white text-2xl" id="mobileMenuBtn">
+        ☰
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="md:hidden mt-4 hidden" id="mobileMenu">
+      <div class="flex flex-col space-y-4">
+        <a href="index.html" class="text-white hover:text-[var(--pw-mid)] font-medium transition-colors py-2">Home</a>
+        <a href="services.html" class="text-white hover:text-[var(--pw-mid)] font-medium transition-colors py-2">Services</a>
+        <a href="portfolio.html" class="text-white hover:text-[var(--pw-mid)] font-medium transition-colors py-2">Portfolio</a>
+        <a href="about.html" class="text-white hover:text-[var(--pw-mid)] font-medium transition-colors py-2">About</a>
+        <a href="contact.html" class="text-white hover:text-[var(--pw-mid)] font-medium transition-colors py-2">Contact</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Mobile menu toggle
+  document.getElementById('mobileMenuBtn')?.addEventListener('click', function() {
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenu.classList.toggle('hidden');
+  });
+</script>
+
+<!-- Customer Care Widget -->
+<div class="customer-care-widget">
+  <button class="customer-care-button" onclick="toggleCustomerCare()">💬</button>
+  <div class="customer-care-panel" id="customerCarePanel">
+    <div class="customer-care-header">
+      Need Help?
+      <button class="customer-care-close" onclick="toggleCustomerCare()">×</button>
+    </div>
+    <div class="customer-care-body">
+      <div class="customer-care-option" onclick="window.location.href='tel:+233556612684'">
+        <div class="customer-care-icon">📞</div>
+        <div>
+          <strong>Call Us</strong>
+          <div class="text-sm">(+233) 55 661 2684</div>
+        </div>
+      </div>
+      <div class="customer-care-option" onclick="window.location.href='https://wa.me/233556612684'">
+        <div class="customer-care-icon">💬</div>
+        <div>
+          <strong>WhatsApp</strong>
+          <div class="text-sm">Chat instantly</div>
+        </div>
+      </div>
+      <div class="customer-care-option" onclick="window.location.href='mailto:printwellinfos@gmail.com'">
+        <div class="customer-care-icon">✉️</div>
+        <div>
+          <strong>Email Us</strong>
+          <div class="text-sm">printwellinfos@gmail.com</div>
+        </div>
+      </div>
+      <div class="customer-care-option" onclick="window.location.href='contact.html'">
+        <div class="customer-care-icon">📝</div>
+        <div>
+          <strong>Request Quote</strong>
+          <div class="text-sm">Get custom pricing</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleCustomerCare() {
+    const panel = document.getElementById('customerCarePanel');
+    panel.classList.toggle('active');
+  }
+  
+  // Close panel when clicking outside
+  document.addEventListener('click', function(event) {
+    const panel = document.getElementById('customerCarePanel');
+    const button = document.querySelector('.customer-care-button');
+    
+    if (panel && button && !panel.contains(event.target) && !button.contains(event.target)) {
+      panel.classList.remove('active');
+    }
+  });
+</script>
+
+<!-- MAIN CONTENT -->
+<section class="max-w-7xl mx-auto px-4 md:px-15 py-8 bg-white/70 rounded-2xl shadow-sm mt-4">
 
 <!-- HERO CAROUSEL -->
-<!-- Include Swiper CSS -->
-<link
-  rel="stylesheet"
-  href="assets/vendor/swiper-bundle.min.css"
-/>
-
-<section class="max-w-9xl mx-auto px-16 py-4">
+<link rel="stylesheet" href="assets/vendor/swiper-bundle.min.css" />
+<section class="max-w-9xl mx-auto px-4 md:px-16 py-4">
   <div class="swiper mySwiper rounded-2xl overflow-hidden shadow-lg">
     <div class="swiper-wrapper">
-
       <!-- Slide 1 -->
-      <div class="swiper-slide relative">
-        <img src="images/hero/stickers-slide.jpg" srcset="images/hero/stickers-slide.jpg 320w, images/hero/stickers-slide.jpg 768w, images/hero/stickers-slide.jpg 1024w, images/hero/stickers-slide.jpg 1280w" sizes="(max-width: 320px) 320px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, 1280px" alt="Custom Stickers" class="w-full h-96 object-cover loading lazy" loading="lazy">
-        <div class="absolute inset-0 bg-black/70 flex flex-col justify-center items-start p-8 space-y-4">
-          <h2 class="text-3xl md:text-4xl font-extrabold text-white">Order High Quality Custom Printed Stickers</h2>
-          <p class="text-white max-w-xl">Join the growing number of small businesses telling their own stories with affordable custom vehicle wraps and graphics today!</p>
-          <div class="flex gap-4">
-            <a href="stickers.html"  class="bg-[var(--pw-mid)] hover:bg-[var(--pw-dark)] text-white font-bold px-6 py-3 rounded uppercase tracking-wider transition-colors border-2 border-[var(--pw-mid)] hover:border-[var(--pw-dark)]">STICKERS</a>
-            <a href="contact.html" class="bg-transparent hover:bg-[var(--pw-mid)] text-white font-bold px-6 py-3 rounded border-2 border-white hover:border-[var(--pw-mid)] uppercase tracking-wider transition-colors">REQUEST A QUOTE</a>
+      <div class="swiper-slide relative w-full flex flex-col">
+        <img 
+          src="images/sticker/image.jpg" 
+          srcset="images/sticker/image.jpg 320w, images/sticker/image.jpg 768w, images/sticker/image.jpg 1024w, images/sticker/image.jpg 1280w" 
+          sizes="(max-width: 320px) 320px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, 1280px" 
+          alt="Custom Stickers" 
+          class="w-full h-64 md:h-96 object-cover"
+          loading="lazy"
+        />
+        <div class="absolute inset-0 bg-black/70 flex flex-col justify-center items-start p-4 md:p-8 space-y-4">
+          <h2 class="text-2xl md:text-4xl font-extrabold text-white">
+            Order High Quality Custom Printed Stickers
+          </h2>
+          <p class="text-white max-w-xl text-sm md:text-base">
+            Join the growing number of small businesses telling their own stories with affordable custom vehicle wraps and graphics today!
+          </p>
+          <div class="flex flex-col md:flex-row gap-2 md:gap-4">
+            <a href="stickers.html" class="bg-[var(--pw-mid)] hover:bg-[var(--pw-dark)] text-white font-bold px-4 md:px-6 py-2 md:py-3 rounded uppercase tracking-wider transition-colors border-2 border-[var(--pw-mid)] hover:border-[var(--pw-dark)] text-sm md:text-base">STICKERS</a>
+            <a href="contact.html" class="bg-transparent hover:bg-[var(--pw-mid)] text-white font-bold px-4 md:px-6 py-2 md:py-3 rounded border-2 border-white hover:border-[var(--pw-mid)] uppercase tracking-wider transition-colors text-sm md:text-base">REQUEST A QUOTE</a>
           </div>
         </div>
       </div>
-       
 
       <!-- Slide 2 -->
-      <div class="swiper-slide relative">
-        <img src="images/hero/vehicle-wraps.jpg" srcset="images/hero/vehicle-wraps.jpg 320w, images/hero/vehicle-wraps.jpg 768w, images/hero/vehicle-wraps.jpg 1024w, images/hero/vehicle-wraps.jpg 1280w" sizes="(max-width: 320px) 320px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, 1280px" alt="Vehicle Wraps" class="w-full h-96 object-cover loading lazy" loading="lazy">
-        <div class="absolute inset-0 bg-black/70 flex flex-col justify-center items-start p-8 space-y-4">
-          <h2 class="text-3xl md:text-4xl font-extrabold text-white uppercase tracking-wide">Premium Vehicle Wraps & Graphics</h2>
-          <p class="text-white max-w-xl text-lg">Stand out on the road with our high-quality custom vehicle wraps for advertising and branding.</p>
-          <a href="vehicle_wraps.html" class="bg-[var(--pw-mid)] hover:bg-[var(--pw-dark)] text-white font-bold px-6 py-3 rounded uppercase tracking-wider transition-colors border-2 border-[var(--pw-mid)] hover:border-[var(--pw-dark)]">LEARN MORE</a>
+      <div class="swiper-slide relative w-full flex flex-col">
+        <img 
+          src="images/vehicle/image.jpg" 
+          srcset="images/vehicle/image.jpg 320w, images/vehicle/image.jpg 768w, images/vehicle/image.jpg 1024w, images/vehicle/image.jpg 1280w" 
+          sizes="(max-width: 320px) 320px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, 1280px" 
+          alt="Vehicle Wraps" 
+          class="w-full h-64 md:h-96 object-cover"
+          loading="lazy"
+        />
+        <div class="absolute inset-0 bg-black/70 flex flex-col justify-center items-start p-4 md:p-8 space-y-4">
+          <h2 class="text-2xl md:text-4xl font-extrabold text-white uppercase tracking-wide">
+            Premium Vehicle Wraps & Graphics
+          </h2>
+          <p class="text-white max-w-xl text-sm md:text-lg">
+            Stand out on the road with our high-quality custom vehicle wraps for advertising and branding.
+          </p>
+          <a href="vehicle_wraps.html" class="bg-[var(--pw-mid)] hover:bg-[var(--pw-dark)] text-white font-bold px-4 md:px-6 py-2 md:py-3 rounded uppercase tracking-wider transition-colors border-2 border-[var(--pw-mid)] hover:border-[var(--pw-dark)] text-sm md:text-base">LEARN MORE</a>
         </div>
       </div>
 
       <!-- Slide 3 -->
-      <div class="swiper-slide relative">
-        <img src="images/hero/apparel-slide.jpg" srcset="images/hero/apparel-slide.jpg 320w, images/hero/apparel-slide.jpg 768w, images/hero/apparel-slide.jpg 1024w, images/hero/apparel-slide.jpg 1280w" sizes="(max-width: 320px) 320px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, 1280px" alt="Branded Apparel" class="w-full h-96 object-cover loading lazy" loading="lazy">
-        <div class="absolute inset-0 bg-black/70 flex flex-col justify-center items-start p-8 space-y-4">
-          <h2 class="text-3xl md:text-4xl font-extrabold text-white uppercase tracking-wide">Branded Apparel for Your Business</h2>
-          <p class="text-white max-w-xl text-lg">Elevate your brand with high-quality custom apparel and direct-to-film printing services.</p>
-          <a href="apparel.html" class="bg-[var(--pw-mid)] hover:bg-[var(--pw-dark)] text-white font-bold px-6 py-3 rounded uppercase tracking-wider transition-colors border-2 border-[var(--pw-mid)] hover:border-[var(--pw-dark)]">SHOP APPAREL</a>
+      <div class="swiper-slide relative w-full flex flex-col">
+        <img 
+          src="images/apparels/app/image1.jpg" 
+          srcset="images/apparels/app/image1.jpg 320w, images/apparels/app/image1.jpg 768w, images/apparels/app/image1.jpg 1024w, images/apparels/app/image1.jpg 1280w"   
+          sizes="(max-width: 320px) 320px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, 1280px" 
+          alt="Branded Apparel" 
+          class="w-full h-64 md:h-96 object-cover"
+          loading="lazy"
+        />
+        <div class="absolute inset-0 bg-black/70 flex flex-col justify-center items-start p-4 md:p-8 space-y-4">
+          <h2 class="text-2xl md:text-4xl font-extrabold text-white uppercase tracking-wide">
+            Branded Apparel for Your Business
+          </h2>
+          <p class="text-white max-w-xl text-sm md:text-lg">
+            Elevate your brand with high-quality custom apparel and direct-to-film printing services.
+          </p>
+          <a href="apparel.html" class="bg-[var(--pw-mid)] hover:bg-[var(--pw-dark)] text-white font-bold px-4 md:px-6 py-2 md:py-3 rounded uppercase tracking-wider transition-colors border-2 border-[var(--pw-mid)] hover:border-[var(--pw-dark)] text-sm md:text-base">SHOP APPAREL</a>
         </div>
       </div>
-
-      <!-- Add more slides similarly -->
-
     </div>
-    <!-- Navigation -->
-    <div class="swiper-button-next text-white"></div>
-    <div class="swiper-button-prev text-white"></div>
     <!-- Pagination -->
     <div class="swiper-pagination"></div>
+    <!-- Navigation -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
   </div>
 </section>
 
-<!-- Include Swiper JS -->
+<!-- Swiper JS -->
 <script src="assets/vendor/swiper-bundle.min.js"></script>
 <script>
-  const swiper = new Swiper('.mySwiper', {
+  // Initialize Swiper
+  const printwellSwiper = new Swiper(".mySwiper", {
     loop: true,
     autoplay: {
       delay: 5000,
       disableOnInteraction: false,
     },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
     pagination: {
-      el: '.swiper-pagination',
+      el: ".swiper-pagination",
       clickable: true,
     },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    effect: "slide",
+    speed: 800,
   });
 </script>
 
-
-
-  <!-- 3 CARDS ROW -->
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-8 pb-12">
-    <!-- Card 1 -->
-    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col items-center text-center group">
-      <div class="h-48 w-full overflow-hidden">
-        <img src="images/sticker/image.jpg" srcset="images/sticker/image.jpg 320w, images/sticker/image.jpg 480w, images/sticker/image.jpg 640w" sizes="(max-width: 320px) 320px, (max-width: 480px) 480px, 640px" alt="Stickers" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 loading lazy" loading="lazy">
+<!-- 3 CARDS ROW – HORIZONTAL FLEX -->
+<section class="max-w-7xl mx-auto px-4 md:px-6 pb-12 overflow-x-hidden">
+  <div class="flex flex-col md:flex-row justify-between gap-6">
+    <!-- Card 1: Stickers -->
+    <div class="group w-full md:w-1/3 bg-white rounded-xl shadow-lg overflow-hidden flex flex-col items-center text-center transition hover:shadow-xl mb-6 md:mb-0">
+      <div class="h-48 w-full min-h-[12rem] overflow-hidden">
+        <img src="images/sticker/image.jpg" alt="Stickers" class="w-full h-full object-cover block group-hover:scale-105 transition-transform duration-300">
       </div>
       <div class="p-6">
         <h3 class="text-xl font-bold mb-2 uppercase tracking-wide">Stickers</h3>
@@ -131,10 +360,11 @@
         </a>
       </div>
     </div>
-    <!-- Card 2 -->
-    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col items-center text-center group">
-      <div class="h-48 w-full overflow-hidden">
-        <img src="images/apparels/image.jpg" srcset="images/apparels/image.jpg 320w, images/apparels/image.jpg 480w, images/apparels/image.jpg 640w" sizes="(max-width: 320px) 320px, (max-width: 480px) 480px, 640px" alt="Apparel" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 loading lazy" loading="lazy">
+
+    <!-- Card 2: Apparel -->
+    <div class="group w-full md:w-1/3 bg-white rounded-xl shadow-lg overflow-hidden flex flex-col items-center text-center transition hover:shadow-xl mb-6 md:mb-0">
+      <div class="h-48 w-full min-h-[12rem] overflow-hidden">
+        <img src="images/apparels/image.jpg" alt="Apparel" class="w-full h-full object-cover block group-hover:scale-105 transition-transform duration-300">
       </div>
       <div class="p-6">
         <h3 class="text-xl font-bold mb-2 uppercase tracking-wide">Apparel</h3>
@@ -144,9 +374,12 @@
         </a>
       </div>
     </div>
-    <!-- Card 3 -->
-    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col items-center text-center group">
-      <div class="h-48 w-full overflow-hidden slideshow" data-images='["images/banners/banner/image1.jpg","images/banners/image1.jpg","images/banners/image2.jpg"]'></div>
+
+    <!-- Card 3: Banners -->
+    <div class="group w-full md:w-1/3 bg-white rounded-xl shadow-lg overflow-hidden flex flex-col items-center text-center transition hover:shadow-xl">
+      <div class="h-48 w-full overflow-hidden slideshow" data-images='["images/banners/banner/image1.jpg","images/banners/image2.jpg","images/banners/image3.jpg"]'>
+        <img src="images/banners/banner/image1.jpg" class="w-full h-full object-cover group-hover:scale-105 transition" alt="Banners">
+      </div>
       <div class="p-6">
         <h3 class="text-xl font-bold mb-2 uppercase tracking-wide">Banners</h3>
         <p class="text-gray-600 mb-4">Eye-catching banners to promote your business or event. Indoor and outdoor options.</p>
@@ -156,162 +389,107 @@
       </div>
     </div>
   </div>
+</section>
 
 <!-- ABOUT / FEATURE SECTION -->
 <section class="w-full bg-white/90">
-  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center px-6 py-16 gap-8">
-
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center px-4 md:px-6 py-12 md:py-16 gap-8">
     <!-- Left Image -->
-    <div class="md:w-1/2 h-64 md:h-[500px]">
+    <div class="md:w-1/2 h-64 md:h-[500px] w-full">
       <img src="images/Embroidery/image1.jpg" alt="Custom Print & Embroidery" class="w-full h-full object-cover rounded-lg shadow-lg" />
     </div>
-
     <!-- Right Text & Button -->
     <div class="md:w-1/2 text-center md:text-left">
-      <h2 class="text-3xl font-extrabold mb-4 text-gray-900 uppercase tracking-wide">
+      <h2 class="text-2xl md:text-3xl font-extrabold mb-4 text-gray-900 uppercase tracking-wide">
         Your One-stop Custom Print & Embroidery Shop
       </h2>
-      <p class="text-gray-700 mb-6 text-lg">
+      <p class="text-gray-700 mb-6 text-base md:text-lg">
         Welcome to PRINTWELL FACTORY, where expertise meets innovation and a dedication to helping businesses shine. 
         With a proud legacy dating back to 2007, in the midst of a housing crisis, we emerged as a family-owned business committed to empowering entrepreneurs. 
         Our journey began as a decal and sign business, but over the years, we've evolved and expanded, becoming specialists in diverse areas of branding and marketing.
       </p>
-      <a href="contact.html" class="inline-block bg-[var(--pw-mid)] hover:bg-[var(--pw-dark)] text-white font-bold px-8 py-4 rounded-lg shadow-lg transition uppercase tracking-wider">
+      <a href="contact.html" class="inline-block bg-[var(--pw-mid)] hover:bg-[var(--pw-dark)] text-white font-bold px-6 md:px-8 py-3 md:py-4 rounded-lg shadow-lg transition uppercase tracking-wider text-sm md:text-base">
         Request a Quote
       </a>
     </div>
-
   </div>
 </section>
 
 <!-- CUSTOM BANNERS & SIGNS SECTION -->
-<section class="w-full bg-gray-50 py-16">
-  <div class="max-w-7xl mx-auto px-6">
-
-    <h2 class="text-3xl font-extrabold text-center mb-12 text-gray-900">
+<section class="w-full bg-gray-50 py-12 md:py-16">
+  <div class="max-w-7xl mx-auto px-4 md:px-6">
+    <h2 class="text-2xl md:text-3xl font-extrabold text-center mb-8 md:mb-12 text-gray-900">
       Make a Statement with Our Custom Banners and Signs
     </h2>
-    <p class="text-gray-700 text-center max-w-2xl mx-auto mb-12">
+    <p class="text-gray-700 text-center max-w-2xl mx-auto mb-8 md:mb-12 text-sm md:text-base">
       Welcome to PRINTWELL FACTORY, where we turn your ideas into impactful visuals. 
       Whether you're promoting an event, enhancing your storefront, or making a statement at a trade show, 
       our custom banners and signs are designed to capture attention and leave a lasting impression.
     </p>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-      <!-- BANNERS -->
-      <a href="banners.html" class="group block rounded-xl overflow-hidden shadow-lg bg-white">
-<div 
-          class="relative h-60 slideshow"
-          data-images='["images/banners/banner/image1.jpg","images/banners/image1.jpg","images/banners/image2.jpg"]'
-        ></div>
-        <div class="p-4 text-center font-bold text-lg">Banners</div>
-      </a>
-
-      <!-- Image Frames -->
-      <a href="frames.html" class="group block rounded-xl overflow-hidden shadow-lg bg-white">
-        <div 
-          class="relative h-60 slideshow"
-          data-images='["images/frames/image.jpg","images/frames/image2.jpg","images/frames/image3.jpg"]'
-        ></div>
-        <div class="p-4 text-center font-bold text-lg">A-Frames</div>
-      </a>
-
-      <!-- WINDOW GRAPHICS -->
-      <a href="windowgraphics.html" class="group block rounded-xl overflow-hidden shadow-lg bg-white">
-        <div 
-          class="relative h-60 slideshow"
-          data-images='["images/windowgraphics/image.jpg","images/windowgraphics/image2.jpg","images/windowgraphics/image3.jpg"]'
-        ></div>
-        <div class="p-4 text-center font-bold text-lg">Window Graphics</div>
-      </a>
-
-    </div>
   </div>
 </section>
 
+<!-- ========================= -->
 <!-- SELECT A CATEGORY SECTION -->
-<section class="w-full bg-gray-100 py-16">
-  <div class="max-w-7xl mx-auto px-6">
-
-    <h2 class="text-3xl font-extrabold text-center mb-12 text-gray-900">
+<!-- ========================= -->
+<section class="w-full bg-gray-100 py-12 md:py-16">
+  <div class="max-w-7xl mx-auto px-4 md:px-6">
+    <h2 class="text-2xl md:text-3xl font-extrabold text-center mb-8 md:mb-12 text-gray-900">
       Select a Category to Get Started
     </h2>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-
-      <!-- Best Sellers -->  
-      <a href="bestsellers.html" class="group block overflow-hidden">
-        <div class="relative h-60">
+    <!-- SECTION 1: 3 cards -->
+    <div class="grid gap-6 sm:grid-cols-1 md:grid-cols-3 mb-8 md:mb-12">
+      <!-- Card 1: Best Sellers -->
+      <a href="bestsellers.html" class="group block bg-white rounded-xl overflow-hidden flex flex-col items-center text-center transition hover:shadow-lg">
+        <div class="h-48 md:h-60 w-full overflow-hidden">
           <div class="slideshow h-full w-full" data-images='["images/cats/bs/image.jpg","images/cats/bs/image2.jpg","images/cats/bs/image3.jpg"]'></div>
         </div>
-        <div class="text-center font-bold text-lg mt-2">Best Sellers</div>
+        <div class="p-4 font-bold text-base md:text-lg">Best Sellers</div>
       </a>
 
-      <!-- Unisex T-Shirts -->
-      <a href="unisex-tshirts.html" class="group block overflow-hidden">
-        <div class="relative h-60">
+      <!-- Card 2: Unisex T-Shirts -->
+      <a href="unisex-tshirts.html" class="group block bg-white rounded-xl overflow-hidden flex flex-col items-center text-center transition hover:shadow-lg">
+        <div class="h-48 md:h-60 w-full overflow-hidden">
           <div class="slideshow h-full w-full" data-images='["images/cats/uts/image.jpg","images/cats/uts/image2.jpg","images/cats/uts/image3.jpg"]'></div>
         </div>
-        <div class="text-center font-bold text-lg mt-2">Unisex T-Shirts</div>
+        <div class="p-4 font-bold text-base md:text-lg">Unisex T-Shirts</div>
       </a>
 
-      <!-- Women's -->
-      <a href="womens.html" class="group block overflow-hidden">
-        <div class="relative h-60">
+      <!-- Card 3: Women's -->
+      <a href="womens.html" class="group block bg-white rounded-xl overflow-hidden flex flex-col items-center text-center transition hover:shadow-lg">
+        <div class="h-48 md:h-60 w-full overflow-hidden">
           <div class="slideshow h-full w-full" data-images='["images/cats/womens/image.jpg","images/cats/womens/image2.jpg","images/cats/womens/image3.jpg"]'></div>
         </div>
-        <div class="text-center font-bold text-lg mt-2">Women's</div>
+        <div class="p-4 font-bold text-base md:text-lg">Women's</div>
       </a>
+    </div>
 
-      <!-- Sweatshirts -->
-      <a href="sweatshirts.html" class="group block overflow-hidden">
-        <div class="relative h-60">
+    <!-- SECTION 2: 3 cards -->
+    <div class="grid gap-6 sm:grid-cols-1 md:grid-cols-3">
+      <!-- Card 4: Sweatshirts -->
+      <a href="sweatshirts.html" class="group block bg-white rounded-xl overflow-hidden flex flex-col items-center text-center transition hover:shadow-lg">
+        <div class="h-48 md:h-60 w-full overflow-hidden">
           <div class="slideshow h-full w-full" data-images='["images/cats/sweatshirts/image.jpg","images/cats/sweatshirts/image2.jpg","images/cats/sweatshirts/image3.jpg"]'></div>
         </div>
-        <div class="text-center font-bold text-lg mt-2">Sweatshirts</div>
+        <div class="p-4 font-bold text-base md:text-lg">Sweatshirts</div>
       </a>
 
-      <!-- Youth -->
-      <a href="youth.html" class="group block overflow-hidden">
-        <div class="relative h-60">
+      <!-- Card 5: Youth -->
+      <a href="youth.html" class="group block bg-white rounded-xl overflow-hidden flex flex-col items-center text-center transition hover:shadow-lg">
+        <div class="h-48 md:h-60 w-full overflow-hidden">
           <div class="slideshow h-full w-full" data-images='["images/cats/youth/image.jpg","images/cats/youth/image2.jpg","images/cats/youth/image3.jpg"]'></div>
         </div>
-        <div class="text-center font-bold text-lg mt-2">Youth</div>
+        <div class="p-4 font-bold text-base md:text-lg">Youth</div>
       </a>
 
-      <!-- Polos -->
-      <a href="polos.html" class="group block overflow-hidden">
-        <div class="relative h-60">
+      <!-- Card 6: Polos -->
+      <a href="polos.html" class="group block bg-white rounded-xl overflow-hidden flex flex-col items-center text-center transition hover:shadow-lg">
+        <div class="h-48 md:h-60 w-full overflow-hidden">
           <div class="slideshow h-full w-full" data-images='["images/cats/polos/image.jpg","images/cats/polos/image2.jpg","images/cats/polos/image3.jpg"]'></div>
         </div>
-        <div class="text-center font-bold text-lg mt-2">Polos</div>
+        <div class="p-4 font-bold text-base md:text-lg">Polos</div>
       </a>
-
-      <!-- Workwear -->
-      <a href="workwear.html" class="group block overflow-hidden">
-        <div class="relative h-60">
-          <div class="slideshow h-full w-full" data-images='["images/cats/work/image.jpg","images/cats/work/image2.jpg","images/cats/work/image3.jpg"]'></div>
-        </div>
-        <div class="text-center font-bold text-lg mt-2">Workwear</div>
-      </a>
-
-      <!-- Jackets -->
-      <a href="jackets.html" class="group block overflow-hidden">
-        <div class="relative h-60">
-          <div class="slideshow h-full w-full" data-images='["images/cats/jackets/image.jpg","images/cats/jackets/image2.jpg","images/cats/jackets/image3.jpg"]'></div>
-        </div>
-        <div class="text-center font-bold text-lg mt-2">Jackets</div>
-      </a>
-
-      <!-- Hats -->
-      <a href="hats.html" class="group block overflow-hidden">
-        <div class="relative h-60">
-          <div class="slideshow h-full w-full" data-images='["images/cats/hats/image.jpg","images/cats/hats/image2.jpg","images/cats/hats/image3.jpg"]'></div>
-        </div>
-        <div class="text-center font-bold text-lg mt-2">Hats</div>
-      </a>
-
     </div>
   </div>
 </section>
@@ -369,100 +547,169 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <!-- CUSTOM STICKERS SECTION -->
-<section class="max-w-7xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center gap-12 bg-white/70 rounded-2xl shadow-sm">
+<section class="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-20 flex flex-col md:flex-row items-center gap-8 md:gap-12 bg-white/70 rounded-2xl shadow-sm">
   <!-- Text Left -->
   <div class="md:w-1/2">
-    <h2 class="text-3xl font-extrabold mb-6">Custom Stickers</h2>
-    <p class="text-gray-800 mb-6">
+    <h2 class="text-2xl md:text-3xl font-extrabold mb-4 md:mb-6">Custom Stickers</h2>
+    <p class="text-gray-800 mb-4 md:mb-6 text-sm md:text-base">
       Elevate your designs with our range of custom stickers, available in gloss, matte, holographic, or clear finishes. Whether you prefer the sleek shine of gloss, the subtle elegance of matte, the mesmerizing allure of holographic, or the minimalist charm of clear stickers, we have the perfect finish for your creative vision. Our stickers, meticulously crafted to your desired shape and size, ensure vibrant colors and sharp details, regardless of the finish you choose. From adding a touch of sophistication with matte to creating a dazzling effect with holographic, our diverse finishes cater to every style. Let your imagination flourish and create stickers that leave a lasting impression, reflecting your unique personality and brand identity. Explore the possibilities – order your custom stickers today and make your designs shine in every way imaginable.
     </p>
-    <a href="stickers.html" class="bg-[var(--pw-light)] hover:bg-[var(--pw-dark)] text-white px-6 py-3 rounded-lg font-bold">Learn More About our Stickers</a>
+    <a href="stickers.html" class="bg-[var(--pw-light)] hover:bg-[var(--pw-dark)] text-white px-4 md:px-6 py-2 md:py-3 rounded-lg font-bold text-sm md:text-base">Learn More About our Stickers</a>
   </div>
   <!-- Image Right -->
-  <div class="md:w-1/2 h-96 relative">
+  <div class="md:w-1/2 h-64 md:h-96 w-full relative mt-6 md:mt-0">
     <div class="slideshow h-full w-full pw-slideshow-rounded" data-images='["images/sticker/stickers/img2.jpg","images/sticker/stickers/img3.jpg","images/sticker/stickers/img1.jpg"]'></div>
   </div>
 </section>
 
 <!-- CUSTOM MENUS SECTION -->
-<section class="max-w-7xl mx-auto px-6 py-20 flex flex-col md:flex-row-reverse items-center gap-12 bg-white/70 rounded-2xl shadow-sm mt-12">
+<section class="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-20 flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12 bg-white/70 rounded-2xl shadow-sm mt-8 md:mt-12">
   <!-- Text Right -->
   <div class="md:w-1/2">
-    <h2 class="text-3xl font-extrabold mb-6">Elevate Your Dining Experience with Our Customized Menus</h2>
-    <p class="text-gray-800 mb-6">
+    <h2 class="text-2xl md:text-3xl font-extrabold mb-4 md:mb-6">Elevate Your Dining Experience with Our Customized Menus</h2>
+    <p class="text-gray-800 mb-4 md:mb-6 text-sm md:text-base">
       At PRINTWELL FACTORY, we understand that a menu is more than just a list of dishes – it's a reflection of your culinary identity. Whether you're a restaurant, food truck, or catering service, our menu solutions are designed to enhance your customer's dining experience.
     </p>
-    <a href="menus.html" class="bg-[var(--pw-light)] hover:bg-[var(--pw-dark)] text-white px-6 py-3 rounded-lg font-bold">Learn More About our Menus</a>
+    <a href="menus.html" class="bg-[var(--pw-light)] hover:bg-[var(--pw-dark)] text-white px-4 md:px-6 py-2 md:py-3 rounded-lg font-bold text-sm md:text-base">Learn More About our Menus</a>
   </div>
   <!-- Image Left -->
-  <div class="md:w-1/2 h-96 relative">
+  <div class="md:w-1/2 h-64 md:h-96 w-full relative mt-6 md:mt-0">
     <div class="slideshow h-full w-full pw-slideshow-rounded" data-images='["images/menus/image2.jpg","images/menus/image1.jpg","images/menus/image.jpg"]'></div>
   </div>
 </section>
 
 <!-- WHY PRINTWELL SECTION -->
-<section class="max-w-7xl mx-auto px-6 py-20 bg-white/70 rounded-2xl shadow-sm mt-12">
-  <h2 class="text-3xl font-extrabold text-center mb-12">WHY PRINTWELL?</h2>
+<section class="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-20 bg-white/70 rounded-2xl shadow-sm mt-8 md:mt-12">
+  <h2 class="text-2xl md:text-3xl font-extrabold text-center mb-8 md:mb-12">WHY PRINTWELL?</h2>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-    
-    <!-- Quality -->
-    <div class="flex flex-col items-center text-center">
-      <img src="images/why/imageq.jpg" class="h-24 mb-4" alt="Quality">
-      <h3 class="font-bold text-xl mb-2">Unmatched Quality</h3>
-      <p class="text-gray-800">We ensure every print, sticker, and banner is crafted with precision and care, reflecting the highest standards.</p>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+    <!-- Card 1: Quality -->
+    <div class="group bg-white rounded-xl shadow-lg overflow-hidden flex flex-col items-center text-center transition hover:shadow-xl">
+      <div class="h-48 w-full overflow-hidden flex items-center justify-center">
+        <img src="images/why/imageq.jpg" alt="Quality" class="h-24 object-contain transition-transform duration-300 group-hover:scale-105">
+      </div>
+      <div class="p-6">
+        <h3 class="text-lg md:text-xl font-bold mb-2">Unmatched Quality</h3>
+        <p class="text-gray-800 text-sm md:text-base">We ensure every print, sticker, and banner is crafted with precision and care, reflecting the highest standards.</p>
+      </div>
     </div>
 
-    <!-- Innovation -->
-    <div class="flex flex-col items-center text-center">
-      <img src="images/why/imagei.jpg" class="h-24 mb-4" alt="Innovation">
-      <h3 class="font-bold text-xl mb-2">Innovative Solutions</h3>
-      <p class="text-gray-800">From creative designs to modern printing techniques, we help your brand stand out in every way.</p>
+    <!-- Card 2: Innovation -->
+    <div class="group bg-white rounded-xl shadow-lg overflow-hidden flex flex-col items-center text-center transition hover:shadow-xl">
+      <div class="h-48 w-full overflow-hidden flex items-center justify-center">
+        <img src="images/why/imagei.jpg" alt="Innovation" class="h-24 object-contain transition-transform duration-300 group-hover:scale-105">
+      </div>
+      <div class="p-6">
+        <h3 class="text-lg md:text-xl font-bold mb-2">Innovative Solutions</h3>
+        <p class="text-gray-800 text-sm md:text-base">From creative designs to modern printing techniques, we help your brand stand out in every way.</p>
+      </div>
     </div>
 
-    <!-- Reliability -->
-    <div class="flex flex-col items-center text-center">
-      <img src="images/why/imager.jpg" class="h-24 mb-4" alt="Reliability">
-      <h3 class="font-bold text-xl mb-2">Reliable & Timely</h3>
-      <p class="text-gray-800">Count on us to deliver every project on time, maintaining consistency and professionalism.</p>
+    <!-- Card 3: Reliability -->
+    <div class="group bg-white rounded-xl shadow-lg overflow-hidden flex flex-col items-center text-center transition hover:shadow-xl">
+      <div class="h-48 w-full overflow-hidden flex items-center justify-center">
+        <img src="images/why/imager.jpg" alt="Reliability" class="h-24 object-contain transition-transform duration-300 group-hover:scale-105">
+      </div>
+      <div class="p-6">
+        <h3 class="text-lg md:text-xl font-bold mb-2">Reliable & Timely</h3>
+        <p class="text-gray-800 text-sm md:text-base">Count on us to deliver every project on time, maintaining consistency and professionalism.</p>
+      </div>
     </div>
 
-    <!-- Customer Service -->
-    <div class="flex flex-col items-center text-center">
-      <img src="images/why/imagecs.jpg" class="h-24 mb-4" alt="Customer Service">
-      <h3 class="font-bold text-xl mb-2">Customer Focused</h3>
-      <p class="text-gray-800">Your satisfaction is our priority. We guide you every step of the way for a smooth and enjoyable experience.</p>
+    <!-- Card 4: Customer Service -->
+    <div class="group bg-white rounded-xl shadow-lg overflow-hidden flex flex-col items-center text-center transition hover:shadow-xl">
+      <div class="h-48 w-full overflow-hidden flex items-center justify-center">
+        <img src="images/why/imagecs.jpg" alt="Customer Service" class="h-24 object-contain transition-transform duration-300 group-hover:scale-105">
+      </div>
+      <div class="p-6">
+        <h3 class="text-lg md:text-xl font-bold mb-2">Customer Focused</h3>
+        <p class="text-gray-800 text-sm md:text-base">Your satisfaction is our priority. We guide you every step of the way for a smooth and enjoyable experience.</p>
+      </div>
     </div>
 
-    <!-- Versatility -->
-    <div class="flex flex-col items-center text-center">
-      <img src="images/why/imagev.jpg" class="h-24 mb-4" alt="Versatility">
-      <h3 class="font-bold text-xl mb-2">Versatility</h3>
-      <p class="text-gray-800">From small-scale decals to large-scale banners, we handle diverse projects with expertise.</p>
+    <!-- Card 5: Versatility -->
+    <div class="group bg-white rounded-xl shadow-lg overflow-hidden flex flex-col items-center text-center transition hover:shadow-xl">
+      <div class="h-48 w-full overflow-hidden flex items-center justify-center">
+        <img src="images/why/imagev.jpg" alt="Versatility" class="h-24 object-contain transition-transform duration-300 group-hover:scale-105">
+      </div>
+      <div class="p-6">
+        <h3 class="text-lg md:text-xl font-bold mb-2">Versatility</h3>
+        <p class="text-gray-800 text-sm md:text-base">From small-scale decals to large-scale banners, we handle diverse projects with expertise.</p>
+      </div>
     </div>
 
-    <!-- Creativity -->
-    <div class="flex flex-col items-center text-center">
-      <img src="images/why/imagec.jpg" class="h-24 mb-4" alt="Creativity">
-      <h3 class="font-bold text-xl mb-2">Creative Excellence</h3>
-      <p class="text-gray-800">We bring ideas to life with unique designs that make your brand memorable and impactful.</p>
+    <!-- Card 6: Creativity -->
+    <div class="group bg-white rounded-xl shadow-lg overflow-hidden flex flex-col items-center text-center transition hover:shadow-xl">
+      <div class="h-48 w-full overflow-hidden flex items-center justify-center">
+        <img src="images/why/imagec.jpg" alt="Creativity" class="h-24 object-contain transition-transform duration-300 group-hover:scale-105">
+      </div>
+      <div class="p-6">
+        <h3 class="text-lg md:text-xl font-bold mb-2">Creative Excellence</h3>
+        <p class="text-gray-800 text-sm md:text-base">We bring ideas to life with unique designs that make your brand memorable and impactful.</p>
+      </div>
     </div>
-
   </div>
 </section>
+</section>
 
+<!-- FOOTER -->
+<footer class="bg-black text-white mt-8 md:mt-12">
+  <div class="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12 grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8 items-start">
+    <!-- LOGO & DESCRIPTION (Left) -->
+    <div class="md:col-span-1">
+      <img src="assets/images/logo.png" class="h-10 md:h-12 mb-4" alt="PRINTWELL" />
+      <p class="text-xs md:text-sm text-gray-300">
+        PRINTWELL – Your partner in branding, design, and printing solutions. Time to dominate your market!
+      </p>
+    </div>
 
-<!-- FOOTER stays the same as in home.html -->
- <!-- FOOTER -->
-<div id="main-footer"></div>
+    <!-- LINKS, CONTACT, SOCIALS (Right) -->
+    <div class="md:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+      <!-- QUICK LINKS -->
+      <div>
+        <h3 class="font-bold text-base md:text-lg mb-3 md:mb-4">Quick Links</h3>
+        <ul class="space-y-1 md:space-y-2 text-gray-300 text-xs md:text-sm">
+          <li><a href="index.html" class="hover:text-[var(--pw-mid)]">Home</a></li>
+          <li><a href="services.html" class="hover:text-[var(--pw-mid)]">Services</a></li>
+          <li><a href="portfolio.html" class="hover:text-[var(--pw-mid)]">Portfolio</a></li>
+          <li><a href="about.html" class="hover:text-[var(--pw-mid)]">About</a></li>
+          <li><a href="contact.html" class="hover:text-[var(--pw-mid)]">Contact</a></li>
+        </ul>
+      </div>
 
-<script src="assets/js/layout.js"></script>
+      <!-- CONTACT INFO -->
+      <div>
+        <h3 class="font-bold text-base md:text-lg mb-3 md:mb-4">Contact Us</h3>
+        <ul class="space-y-1 md:space-y-2 text-gray-300 text-xs md:text-sm">
+          <li>📞 (+233) 55 661 2684</li>
+          <li>📧 printwellinfos@gmail.com</li>
+          <li>📍 Patasi, Kumasi</li>
+        </ul>
+      </div>
 
+      <!-- NEWSLETTER & SOCIALS -->
+      <div>
+        <h3 class="font-bold text-base md:text-lg mb-3 md:mb-4">Stay Connected</h3>
+        <p class="text-gray-300 text-xs md:text-sm mb-3 md:mb-4">Subscribe to our newsletter for updates and offers.</p>
+        <form class="flex flex-col sm:flex-row gap-2">
+          <input type="email" placeholder="Your email" class="flex-1 px-2 py-2 rounded-md text-black outline-none text-sm" />
+          <button class="bg-[var(--pw-light)] hover:bg-[var(--pw-dark)] px-3 md:px-4 py-2 rounded-md font-bold text-white text-sm">Subscribe</button>
+        </form>
+        <div class="flex gap-3 md:gap-4 mt-3 md:mt-4 text-lg md:text-xl">
+          <a href="#" class="hover:text-[var(--pw-mid)]">📘</a>
+          <a href="#" class="hover:text-[var(--pw-mid)]">🐦</a>
+          <a href="#" class="hover:text-[var(--pw-mid)]">📸</a>
+          <a href="#" class="hover:text-[var(--pw-mid)]">💼</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<script src="assets.js" defer></script>
-<script src="content.js" defer></script>
-<script src="newsletter.js" defer></script>
-<script src="components/tawk-widget.js" defer></script>
+  <!-- COPYRIGHT -->
+  <div class="border-t border-gray-800 mt-6 md:mt-8 py-3 md:py-4 text-center text-gray-400 text-xs md:text-sm">
+    &copy; 2025 PRINTWELL. All rights reserved.
+  </div>
+</footer>
 
-  
-
+</body>
+</html>
