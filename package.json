@@ -1,0 +1,10 @@
+{
+  "name": "printwell-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "PRINTWELL marketing site prepared for deployment.",
+  "scripts": {
+    "dev": "vercel dev",
+    "test": "echo \"No tests configured\""
+  }
+}

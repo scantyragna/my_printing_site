@@ -1,0 +1,9 @@
+node_modules/
+.venv/
+*.log
+.DS_Store
+Thumbs.db
+nul
+package-lock.json
+server.log
+server_output.log
